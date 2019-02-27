@@ -1,0 +1,2 @@
+clear
+mono gsws.exe
