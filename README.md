@@ -1,4 +1,4 @@
-# GSWS v0.1.1-alpha.1
+# [GSWS v0.1.1-alpha.2](https://github.com/jaymirecki/gsws)
 
 A simulation of the Star Wars Galaxy. This project is developed in C# for the Microsoft .NET Framework and runs in console/terminal. This is the same project that was under development in C++ and can now be found in [this repository](https://github.com/jaymirecki/gsws-deprecated).
 
@@ -36,6 +36,16 @@ The following is a roadmap for the development of new features:
 * Quick battle simulation, akin to the Auto-Resolve feature from Empire at War
 * Galactic Campaigns
 * News
+
+## Change Log
+### v0.1.1-alpha.2
+* Code style: file header comments, function contracts
+* File organization added to README
+### v0.1.1-alpha.1
+* Initial implementation of government management
+* Basic pressure calculations, without any affect on constituent happiness
+* Menu system
+* Console display system
 
 # How to interact with the project
 ## Getting Started
@@ -75,6 +85,13 @@ output="/mnt/c/Users/Jay/Documents/Jay's Documents/coding/starwars/gsws/compile/
 ```
 
 Open the folder in your favorite editor or IDE.
+
+### File Organization
+* gsws: main repository with executable and shell scripts for compiling and running
+    * code: repository with the code for the project
+        * init: code to setup the simulator (namespace Initialization)
+        * ui: implementation of menus and console display (namespace UI)
+    * compile: repository with compile logs for ease of testing
 
 ## Running the tests
 

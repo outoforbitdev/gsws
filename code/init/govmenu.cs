@@ -1,7 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                                 govmenu.cs                                 //
+//                Create menus related to government management               //
+//             Created by: Jarett (Jay) Mirecki, February 26, 2019            //
+//            Modified by: Jarett (Jay) Mirecki, February 27, 2019            //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
 using System;
 
 namespace GSWS.Initialize {
     partial class Menus {
+        // GovMenu()
+        // Creates the main government management menu and adds it to the 
+        //     MainPool
+        // Parameters: None
+        // Returns: void
         private static void GovMenu() {
             TaxMenu();
             UI.Menu menu = new UI.Menu("Government", "Please choose an option");
@@ -33,6 +47,10 @@ namespace GSWS.Initialize {
                 };
             GSWS.MainPool.Add("govmenu",menu);
         }
+        // TaxMenu()
+        // Creates the tax management menu adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void TaxMenu() {
             RTaxMenu();
             CTaxMenu();
@@ -66,6 +84,11 @@ namespace GSWS.Initialize {
                 };
             GSWS.MainPool.Add("taxmenu",menu);
         }
+        // RTaxMenu()
+        // Creates residential tax modification menu and  adds it to the 
+        //     MainPool
+        // Parameters: None
+        // Returns: void
         private static void RTaxMenu() {
             UI.Menu menu = new UI.Menu("Residential Tax Rate", "Please enter a tax rate", true);
             menu.onInput =
@@ -84,6 +107,11 @@ namespace GSWS.Initialize {
                 };
             GSWS.MainPool.Add("rtaxmenu",menu);
         }
+        // RTaxMenu()
+        // Creates commercial tax modification menu and  adds it to the 
+        //     MainPool
+        // Parameters: None
+        // Returns: void
         private static void CTaxMenu() {
             UI.Menu menu = new UI.Menu("Residential Tax Rate", "Please enter a tax rate", true);
             menu.onInput =

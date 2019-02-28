@@ -1,13 +1,30 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                                 newgame.cs                                 //
+//                    Create the menus to set up a new game                   //
+//             Created by: Jarett (Jay) Mirecki, February 21, 2019            //
+//             Modified by: Jarett (Jay) Mirecki Febrary 27, 2019             //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
 using System;
 
 namespace GSWS.Initialize {
     partial class Menus {
+        // NewGame()
+        // Creates all the menus required to set up a new game
+        // Parameters: None
+        // Returns: void
         private static void NewGame() {
             namemenu();
             factionmenu();
             eramenu();
             fundsmenu();
         }
+        // namemenu()
+        // Creates the choose name menu adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void namemenu() {
             UI.Menu newmenu = new UI.Menu("New Game", "Please enter your character's name:", true);
             newmenu.onInput = 
@@ -19,6 +36,10 @@ namespace GSWS.Initialize {
                 };
             GSWS.MainPool.Add("newgame", newmenu);
         }
+        // era()
+        // Creates the choose era menu and adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void eramenu() {
             UI.Menu era = new UI.Menu("New Game", "Please choose a start date");
             era.Add("1000 BBY: Rise of the Empire Era (Early)");
@@ -54,6 +75,10 @@ namespace GSWS.Initialize {
                 };
             GSWS.MainPool.Add("chooseera", era);
         }
+        // MainMenu()
+        // Creates the choose faction menu and adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void factionmenu() {
             UI.Menu faction = new UI.Menu("New Game", "Please choose your faction");
             faction.Add("Galactic Federation of Free Alliances");
@@ -82,6 +107,10 @@ namespace GSWS.Initialize {
                 };
             GSWS.MainPool.Add("choosefaction", faction);
         }
+        // MainMenu()
+        // Creates the enter funds menu and adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void fundsmenu() {
             UI.Menu funds = new UI.Menu("New Game", "Please enter your starting funds", true);
             funds.onInput =

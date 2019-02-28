@@ -1,7 +1,20 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                                 mainmenu.cs                                //
+//                         Create the opening main menu                       //
+//             Created by: Jarett (Jay) Mirecki, February 20, 2019            //
+//            Modified by: Jarett (Jay) Mirecki, February 27, 2019            //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
 using System;
 
 namespace GSWS.Initialize {
     partial class Menus {
+        // MainMenu()
+        // Creates the opening main menu and adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void MainMenu() {
             UI.Menu mainmenu = new UI.Menu("GSWS", "Please choose an option to begin:");
             mainmenu.Add("New Game");
@@ -49,6 +62,10 @@ namespace GSWS.Initialize {
 
             GSWS.MainPool.Add("mainmenu", mainmenu);
         }
+        // NotImplemented()
+        // Creates the "not implemented" screen and adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void NotImplemented() {
             UI.Menu menu = new UI.Menu("This feature is not implemented yet", "Hopefully it will be added soon");
             menu.Add("OK");

@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                                   menu.cs                                  //
+//                           Impementation of menus                           //
+//             Created by: Jarett (Jay) Mirecki, February 20, 2019            //
+//             Modified by: Jarett (Jay) Mirecki February 27, 2019            //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
 using System;
 using System.Collections.Generic;
 
@@ -16,25 +25,56 @@ namespace GSWS.UI {
         string[] TitleBox, ToolTip;
         bool done, input;
 
+        // Constructor
+        // Creates an option menu with the specified title
+        // Parameters: string name of the menu
         public Menu(string name) {
             Setup(name, "", null, false);
         }
+        // Constructor
+        // Creates an option menu with the specified title and subtitle
+        // Parameters: string name of the menu
+        //             string description of the menu
         public Menu(string name, string subname) {
             Setup(name, subname, null, false);
         }
+        // Constructor
+        // Creates an option or input menu with the specified title
+        // Parameters: string name of the menu
+        //             boolean for whether the menu accepts input
         public Menu(string name, bool text) {
             Setup(name, "", null, text);
         }
+        // Constructor
+        // Creates an option or input menu with the specified title and subtitle
+        // Parameters: string name of the menu
+        //             string description of the menu
+        //             boolean for whether the menu accepts input
         public Menu(string name, string subname, bool text) {
             Setup(name, subname, null, text);
         }
+        // Constructor
+        // Creates an option or input menu with the specified title, subtitle, 
+        //     and tooltip
+        // Parameters: string name of the menu
+        //             string description of the menu
+        //             string array for the tooltip
+        //             boolean for whether the menu accepts input
         public Menu(string name, string subname, string[] tooltip, bool text) {
             Setup(name, subname, tooltip, text);
         }
+        // UpdateToolTip
+        // Updates the tool tip for the menu
+        // Paramters: string array to replace the tooltip
+        // Returns: void
         public void UpdateToolTip(string[] newToolTip) {
             ToolTip = newToolTip;
             BuildTitleBox();
         }
+        // ResetSelect
+        // Resets the currently selected option to the first item
+        // Paramters: None
+        // Returns: void
         public void ResetSelect() {
             select = 0;
         }
@@ -62,9 +102,17 @@ namespace GSWS.UI {
                 for (int i = 0; i < ToolTip.Length; i++)
                     TitleBox[2 + i] = ToolTip[i];
         }
+        // Add
+        // Adds an option to the end of the menu
+        // Paramters: string name of the option to add
+        // Returns: void
         public void Add(string option) {
             options.Add(option);
         }
+        // Print
+        // Prints the menu
+        // Paramters: None
+        // Returns: void
         public void Print() {
             if (input) {
                 JMSuite.UI.ConsoleDisplay.PrintMiddle(TitleBox, options.ToArray());
@@ -72,16 +120,28 @@ namespace GSWS.UI {
                 JMSuite.UI.ConsoleDisplay.PrintMiddle(TitleBox, options.ToArray(), select);
             }
         }
+        // Next
+        // Moves the selector to the next option
+        // Paramters: None
+        // Returns: void
         public void Next() {
             select++;
             if (select >= options.Count)
                 select = 0;
         }
+        // Previous
+        // Moves the selector to the previous option
+        // Paramters: None
+        // Returns: void
         public void Previous() {
             select--;
             if (select < 0)
                 select = options.Count - 1;
         }
+        // Enter
+        // Loads the menu for the client to use
+        // Paramters: None
+        // Returns: void
         public void Enter() {
             onLoad();
             done = false;
@@ -104,6 +164,10 @@ namespace GSWS.UI {
                 }
             }
         }
+        // Quit
+        // Quits the menu (has no effect if the menu is not entered)
+        // Paramters: None
+        // Returns: void
         public void Quit() {
             ResetSelect();
             done = true;

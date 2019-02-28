@@ -1,7 +1,20 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                                 gamemenu.cs                                //
+//              Initialize menus and create the session game menu             //
+//             Created by: Jarett (Jay) Mirecki, February 21, 2019            //
+//            Modified by: Jarett (Jay) Mirecki, February 27, 2019            //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
 using System;
 
 namespace GSWS.Initialize {
     partial class Menus {
+        // Init()
+        // Creates instances of all required menus
+        // Parameters: None
+        // Returns: void
         public static void Init() {
             MainMenu();
             NewGame();
@@ -9,6 +22,10 @@ namespace GSWS.Initialize {
             GovMenu();
             NotImplemented();
         }
+        // GameMenu()
+        // Creates the session game menu and adds it to the MainPool
+        // Parameters: None
+        // Returns: void
         private static void GameMenu() {
             UI.Menu gamemenu = new UI.Menu("GSWS", "Please choose an option");
             gamemenu.Add("Administration");
