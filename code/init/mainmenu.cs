@@ -3,7 +3,7 @@
 //                                 mainmenu.cs                                //
 //                         Create the opening main menu                       //
 //             Created by: Jarett (Jay) Mirecki, February 20, 2019            //
-//            Modified by: Jarett (Jay) Mirecki, February 27, 2019            //
+//              Modified by: Jarett (Jay) Mirecki, March 01, 2019             //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -30,21 +30,22 @@ namespace GSWS.Initialize {
                             mainmenu.ResetSelect();
                             break;
                         case 1:
-                            Game.Init();
-                            Game.Player.Name = "Avan Ardele";
-                            Game.Faction = Game.Player.Faction = Faction.Extra1;
-                            Game.FactionInfo.SetName(Game.Faction, "IMF");
-                            Game.Date = 41 * 365;
-                            Game.FactionInfo.SetFunds(Game.Faction, 1191876720);
-                            Gov newGov = new Gov("IMF", 0, 0);
-                            newGov.Population = 327167434;
-                            newGov.Wealth = 30000;
-                            newGov.Industry = 162637000;
-                            newGov.Productivity = 126050;
-                            newGov.Capacity = 400000000;
-                            newGov.TaxResidential = 0.09;
-                            newGov.TaxCommercial = 0.2;
-                            Game.FactionInfo.SetGovernment(Game.Faction, newGov);
+                            Game.Load("test");
+                            // Game.Init();
+                            // Game.Player.Name = "Avan Ardele";
+                            // Game.Faction = Game.Player.Faction = Faction.Extra1;
+                            // Game.FactionInfo.SetName(Game.Faction, "IMF");
+                            // Game.Date = 41 * 365;
+                            // Game.FactionInfo.SetFunds(Game.Faction, 1191876720);
+                            // Gov newGov = new Gov("IMF", 0, 0);
+                            // newGov.Population = 327167434;
+                            // newGov.Wealth = 30000;
+                            // newGov.Industry = 162637000;
+                            // newGov.Productivity = 126050;
+                            // newGov.Capacity = 400000000;
+                            // newGov.TaxResidential = 0.09;
+                            // newGov.TaxCommercial = 0.2;
+                            // Game.FactionInfo.SetGovernment(Game.Faction, newGov);
                             Game.UpdateMenus();
                             GSWS.MainPool.Open("gamemenu");
                             mainmenu.ResetSelect();
@@ -74,6 +75,19 @@ namespace GSWS.Initialize {
                     menu.Quit();
                 };
             GSWS.MainPool.Add("notimplemented", menu);
+        }
+        private static void Error() {
+            UI.Menu menu = new UI.Menu("Error");
+            menu.Add("OK");
+            menu.onSelect =
+                delegate(int i) {
+                    menu.Quit();
+                };
+            menu.onLoad =
+                delegate() {
+                    menu.UpdateToolTip(new string[] { Game.Error });
+                };
+            GSWS.MainPool.Add("error", menu);
         }
     }
 }

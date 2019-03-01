@@ -3,7 +3,7 @@
 //                                 gamemenu.cs                                //
 //              Initialize menus and create the session game menu             //
 //             Created by: Jarett (Jay) Mirecki, February 21, 2019            //
-//            Modified by: Jarett (Jay) Mirecki, February 27, 2019            //
+//              Modified by: Jarett (Jay) Mirecki, March 01, 2019             //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -21,6 +21,7 @@ namespace GSWS.Initialize {
             GameMenu();
             GovMenu();
             NotImplemented();
+            Error();
         }
         // GameMenu()
         // Creates the session game menu and adds it to the MainPool
@@ -47,7 +48,7 @@ namespace GSWS.Initialize {
                             GSWS.MainPool.Open("notimplemented");
                             break;
                         case 3:
-                            GSWS.MainPool.Open("notimplemented");
+                            Parse.Save();
                             break;
                         case 4:
                             GSWS.MainPool.Open("notimplemented");

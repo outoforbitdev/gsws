@@ -3,7 +3,7 @@
 //                                   gsws.cs                                  //
 //                  Implements main and launches the program                  //
 //             Created by: Jarett (Jay) Mirecki, February 20, 2019            //
-//             Modified by: Jarett (Jay) Mirecki Febrary 27, 2019             //
+//             Modified by: Jarett (Jay) Mirecki Febrary 28, 2019             //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -16,7 +16,7 @@ namespace GSWS {
         public const int minor = 1;
         public const int patch = 1;
         public const string prerelease = "-alpha.";
-        public const int prereleaseversion = 2;
+        public const int prereleaseversion = 3;
         // The menu pool to store and open all 
         // menus used by the core game files
         public static UI.MenuPool MainPool = new UI.MenuPool();

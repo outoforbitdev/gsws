@@ -1,4 +1,4 @@
-# [GSWS v0.1.1-alpha.2](https://github.com/jaymirecki/gsws)
+# [GSWS v0.1.1-alpha.3](https://github.com/jaymirecki/gsws)
 
 A simulation of the Star Wars Galaxy. This project is developed in C# for the Microsoft .NET Framework and runs in console/terminal. This is the same project that was under development in C++ and can now be found in [this repository](https://github.com/jaymirecki/gsws-deprecated).
 
@@ -18,13 +18,12 @@ This is an ambitious project, but there are some cool features to look forward t
 * GUI: To begin with, the program will run entirely in terminal/console. This cuts down on ~artistic~ time. However, the project is being designed with display abstracted away from the rest of the program. This will hopefully allow for a relatively straight forward transition to a GUI once more features are implemented.
 
 ## Where We Are
-We are currently in the earliest phases of development. Government management is the only feature under development.
+We are currently in the earliest phases of development. Government management is the only feature under development. To facilitate better testing and reduce workload later, saving and loading from file will be implemented as other features are developed.
 
 ## Where We Are Going
 The following is a roadmap for the development of new features:
 
 * Government Management
-* Save/Load from file
 * Galactic Map
     * Complete with planets, systems, sectors, and regions
 * Representation of beings and vehicles
@@ -37,7 +36,15 @@ The following is a roadmap for the development of new features:
 * Galactic Campaigns
 * News
 
-## Change Log
+## User Change Log
+### v0.1.1-alpha.3
+* Load and save features are now available.
+
+## Developer Change Log
+### v0.1.1-alpha.3
+* Added Planet class.
+* Changed FactionInfo GetGovernment method to return the Gov object by reference.
+* Allowed current classes to be saved to file for loading and saving games.
 ### v0.1.1-alpha.2
 * Code style: file header comments, function contracts
 * File organization added to README

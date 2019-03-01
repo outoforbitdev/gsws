@@ -1,3 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            //
+//                                government.cs                               //
+//                       Representation of a government                       //
+//             Created by: Jarett (Jay) Mirecki, February 21, 2019            //
+//              Modified by: Jarett (Jay) Mirecki, March 01, 2019             //
+//                                                                            //
+// Currently, the government class holds information that will eventually be  //
+// extracted into the Planet class (Economic, Social, Population statistics), //
+// and more fields will be added for positions in the government, laws, and   //
+// balance of power.                                                          //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
 using System;
 
 namespace GSWS {
@@ -29,6 +43,55 @@ namespace GSWS {
             this.Social = social;
             Population = Wealth = Industry = Productivity = Capacity = 0;
             PopulationPressure = WealthPressure = IndustryPressure = ProductivityPressure = CapacityPressure = 0;
+        }
+        public Gov(string encodedGov) {
+            string one = encodedGov;
+            string two, name, economic, social, population, wealth, industry, productivity, capacity, taxResidential, taxCommercial;
+
+            Parse.FirstPair(one, "Name", out name, out two);
+            Parse.FirstPair(two, "Economic", out economic, out one);
+            Parse.FirstPair(one, "Social", out social, out two);
+            Parse.FirstPair(two, "Population", out population, out one);
+            Parse.FirstPair(one, "Wealth", out wealth, out two);
+            Parse.FirstPair(two, "Industry", out industry, out one);
+            Parse.FirstPair(one, "Productivity", out productivity, out two);
+            Parse.FirstPair(two, "Capacity", out capacity, out one);
+            Parse.FirstPair(one, "TaxResidential", out taxResidential, out two);
+            Parse.FirstPair(two, "TaxCommercial", out taxCommercial, out one);
+
+            int TryEconomic, TrySocial, TryPopulation, TryWealth, TryIndustry, TryProductivity, TryCapacity, TryTaxResidential, TryTaxCommercial;
+            Int32.TryParse(economic, out TryEconomic);
+            Int32.TryParse(social, out TrySocial);
+            Int32.TryParse(population, out TryPopulation);
+            Int32.TryParse(wealth, out TryWealth);
+            Int32.TryParse(industry, out TryIndustry);
+            Int32.TryParse(productivity, out TryProductivity);
+            Int32.TryParse(capacity, out TryCapacity);
+            Int32.TryParse(taxResidential, out TryTaxResidential);
+            Int32.TryParse(taxCommercial, out TryTaxCommercial);
+
+            Economic = TryEconomic;
+            Social = TrySocial;
+            Population = TryPopulation;
+            Wealth = TryWealth;
+            Industry = TryIndustry;
+            Productivity = TryProductivity;
+            Capacity = TryCapacity;
+            TaxResidential = TryTaxResidential;
+            TaxCommercial = TryTaxCommercial;
+        }
+        public string Encode() {
+            return "{\"Name\": \"" + Name 
+                   + "\", \"Economic\": \"" + Economic.ToString()
+                   + "\", \"Social\": \"" + Social.ToString()
+                   + "\", \"Population\": \"" + Population.ToString()
+                   + "\", \"Wealth\": \"" + Wealth.ToString()
+                   + "\", \"Industry\": \"" + Industry.ToString()
+                   + "\", \"Productivity\": \"" + Productivity.ToString()
+                   + "\", \"Capacity\": \"" + Capacity.ToString()
+                   + "\", \"TaxResidential\": \"" + TaxResidential.ToString()
+                   + "\", \"TaxCommercial\": \"" + TaxCommercial.ToString()
+                   + "\"}";
         }
         public void CalculatePressure() {
             PopulationPressure = (double)Wealth / 40000 + (double)Industry / Population;// + Capacity / Population;

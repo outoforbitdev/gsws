@@ -3,7 +3,7 @@
 //                                 govmenu.cs                                 //
 //                Create menus related to government management               //
 //             Created by: Jarett (Jay) Mirecki, February 26, 2019            //
-//            Modified by: Jarett (Jay) Mirecki, February 27, 2019            //
+//            Modified by: Jarett (Jay) Mirecki, February 28, 2019            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -24,7 +24,8 @@ namespace GSWS.Initialize {
             menu.Add("Back");
             menu.onSelect =
                 delegate(int i) {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     switch(i) {
                         case 0:
                             gov.CalculatePressure();
@@ -42,7 +43,8 @@ namespace GSWS.Initialize {
                 };
             menu.onLoad =
                 delegate() {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     menu.UpdateToolTip(gov.GetToolTip());
                 };
             GSWS.MainPool.Add("govmenu",menu);
@@ -60,7 +62,8 @@ namespace GSWS.Initialize {
             menu.Add("Back");
             menu.onSelect = 
                 delegate(int i) {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     switch(i) {
                         case 0:
                             GSWS.MainPool.Open("rtaxmenu");
@@ -79,7 +82,8 @@ namespace GSWS.Initialize {
                 };
             menu.onLoad =
                 delegate() {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     menu.UpdateToolTip(new string[] { "Residential Rate: " + gov.TaxResidential + "     Commericial Rate: " + gov.TaxCommercial });
                 };
             GSWS.MainPool.Add("taxmenu",menu);
@@ -93,16 +97,17 @@ namespace GSWS.Initialize {
             UI.Menu menu = new UI.Menu("Residential Tax Rate", "Please enter a tax rate", true);
             menu.onInput =
                 delegate(string s) {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     double rate = 0;
                     Double.TryParse(s, out rate);
                     gov.TaxResidential = rate;
-                    Game.FactionInfo.SetGovernment(Game.Faction, gov);
                     menu.Quit();
                 };
             menu.onLoad =
                 delegate() {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     menu.UpdateToolTip(new string[] { "Currently " + gov.TaxResidential });
                 };
             GSWS.MainPool.Add("rtaxmenu",menu);
@@ -116,16 +121,17 @@ namespace GSWS.Initialize {
             UI.Menu menu = new UI.Menu("Residential Tax Rate", "Please enter a tax rate", true);
             menu.onInput =
                 delegate(string s) {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     double rate = 0;
                     Double.TryParse(s, out rate);
                     gov.TaxCommercial = rate;
-                    Game.FactionInfo.SetGovernment(Game.Faction, gov);
                     menu.Quit();
                 };
             menu.onLoad =
                 delegate() {
-                    Gov gov = Game.FactionInfo.GetGovernment(Game.Faction);
+                    Gov gov;
+                    Game.FactionInfo.GetGovernment(Game.Faction, out gov);
                     menu.UpdateToolTip(new string[] { "Currently " + gov.TaxCommercial });
                 };
             GSWS.MainPool.Add("ctaxmenu",menu);
