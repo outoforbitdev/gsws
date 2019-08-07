@@ -1,4 +1,4 @@
-# [GSWS v0.1.1-alpha.3](https://github.com/jaymirecki/gsws)
+# [GSWS v0.1.1-alpha.4](https://github.com/jaymirecki/gsws)
 
 A simulation of the Star Wars Galaxy. This project is developed in C# for the Microsoft .NET Framework and runs in console/terminal. This is the same project that was under development in C++ and can now be found in [this repository](https://github.com/jaymirecki/gsws-deprecated).
 
@@ -15,7 +15,7 @@ This is an ambitious project, but there are some cool features to look forward t
 
 * Succession: When a major character dies or exits office, they will be replaced by election or internal politics.
 * Factions: Eventually, all the major factions will be represented, including some from the Legacy Era (Galactic Alliance, Imperial Remnant, CSA, Hapes, Mandalore, the Hutts, and the Confederation).
-* GUI: To begin with, the program will run entirely in terminal/console. This cuts down on ~artistic~ time. However, the project is being designed with display abstracted away from the rest of the program. This will hopefully allow for a relatively straight forward transition to a GUI once more features are implemented.
+* GUI: To begin with, the program will run entirely in terminal/console. This cuts down on _artistic_ time. However, the project is being designed with display abstracted away from the rest of the program. This will hopefully allow for a relatively straight forward transition to a GUI once more features are implemented.
 
 ## Where We Are
 We are currently in the earliest phases of development. Government management is the only feature under development. To facilitate better testing and reduce workload later, saving and loading from file will be implemented as other features are developed.
@@ -37,10 +37,16 @@ The following is a roadmap for the development of new features:
 * News
 
 ## User Change Log
+### v0.1.1-alpha.4
+
 ### v0.1.1-alpha.3
 * Load and save features are now available.
 
 ## Developer Change Log
+### v0.1.1-alpha.4
+* Encode and Decode Planet objects
+* Graph created to store planets. Allows for lookup and distance calculations.
+* PriorityQueue created to implement the graph.
 ### v0.1.1-alpha.3
 * Added Planet class.
 * Changed FactionInfo GetGovernment method to return the Gov object by reference.
@@ -106,7 +112,8 @@ Tests coming soon.
 
 ## Built With
 
-* [Microsoft .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net472) - To compile and run the program
+* [Microsoft .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net472) - To compile and run on Windows
+* [Mono](https://www.mono-project.com/download/stable/) - To compile and run on Linux
 * [Visual Studio Code](https://code.visualstudio.com/) - The editor used
 
 ## Authors

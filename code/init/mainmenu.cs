@@ -3,7 +3,7 @@
 //                                 mainmenu.cs                                //
 //                         Create the opening main menu                       //
 //             Created by: Jarett (Jay) Mirecki, February 20, 2019            //
-//              Modified by: Jarett (Jay) Mirecki, March 01, 2019             //
+//              Modified by: Jarett (Jay) Mirecki, March 03, 2019             //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -88,6 +88,41 @@ namespace GSWS.Initialize {
                     menu.UpdateToolTip(new string[] { Game.Error });
                 };
             GSWS.MainPool.Add("error", menu);
+        }
+        private static void TestGraph() {
+            JMSuite.Collections.Graph<int, int> graph 
+                                    = new JMSuite.Collections.Graph<int, int>();
+            graph.Add(1, 1, new int[] { 2, 3 });
+            graph.Add(2, 2, new int[] { 1, 4 });
+            graph.Add(3, 3, new int[] { 1, 4 });
+            graph.Add(4, 4, new int[] { 2, 3 });
+            Game.GiveError("Distance from 1 to 4 = " + graph.DistanceTo(1, 4));
+            
+            JMSuite.Collections.Graph<string, string> graph2
+                                    = new JMSuite.Collections.Graph<string, string>();
+            graph2.Add("Coruscant", "Coruscant", 
+                       new string[] { "Corellia", "Brentaal", "Ord Mantel"});
+            graph2.Add("Corellia", "Corellia", 
+                       new string[] { "Coruscant"});
+            graph2.Add("Brentaal", "Brentaal", 
+                       new string[] { "Coruscant", "Bandomeer", "Taanab"});
+            graph2.Add("Ord Mantel", "Ord Mantel", 
+                       new string[] { "Coruscant", "Bastion"});
+            graph2.Add("Bandomeer", "Bandomeer", 
+                       new string[] { "Brentaal", "Mandalore"});
+            graph2.Add("Taanab", "Taanab", 
+                       new string[] { "Hapes", "Brentaal"});
+            graph2.Add("Bastion", "Bastion", 
+                       new string[] { "Ord Mantel"});
+            graph2.Add("Mandalore", "Mandalore", 
+                       new string[] { "Bandomeer"});
+            graph2.Add("Hapes", "Hapes", 
+                       new string[] { "Taanab"});
+            graph2.Add("Hapes", "Hapes", 
+                       new string[] { "Taanab"});
+            Game.GiveError("Distance from Coruscant to Corellia = " + graph2.DistanceTo("Coruscant", "Corellia"));
+            Game.GiveError("Distance from Coruscant to Hapes = " + graph2.DistanceTo("Coruscant", "Hapes"));
+            
         }
     }
 }

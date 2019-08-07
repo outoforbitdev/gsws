@@ -1,5 +1,5 @@
 #!/bin/bash
-compile="/mnt/c/Windows/Microsoft.NET/Framework/v4.0.30319/csc.exe -recurse:*.cs"
+compile="/mnt/c/Windows/Microsoft.NET/Framework/v4.0.30319/csc.exe -debug -recurse:*.cs"
 core="gsws.cs"
 game=("./game/faction.cs" "game/player.cs" "game/world.cs")
 init="initialize/mainmenu.cs initialize/newgame.cs"

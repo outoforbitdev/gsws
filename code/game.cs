@@ -3,7 +3,7 @@
 //                                   game.cs                                  //
 //          Implementation of the details specific to a game session          //
 //             Created by: Jarett (Jay) Mirecki, February 21, 2019            //
-//            Modified by: Jarett (Jay) Mirecki, February 28, 2019            //
+//              Modified by: Jarett (Jay) Mirecki, March 02, 2019             //
 //                                                                            //
 // The Game class holds the state of game session. These details include the  //
 // Player, Faction, FactionInfo, Date, and some functions to make sure the UI //
@@ -35,7 +35,7 @@ namespace GSWS {
             Date = 0;
             FactionInfo = new FactionInfo();
             Error = "";
-            Graph<string, Planet> example = new Graph<string, Planet>();
+            JMSuite.Collections.Graph<string, Planet> example = new JMSuite.Collections.Graph<string, Planet>();
             
         }
         // UpdateMenus
