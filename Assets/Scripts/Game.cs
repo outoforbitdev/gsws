@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using GSWS;
 using JMSuite.Collections;
 
-public class Game : MonoBehaviour
+public partial class Game : MonoBehaviour
 {
     public static Game Instance;
     private Date Date;
@@ -25,7 +24,7 @@ public class Game : MonoBehaviour
     }
     public static void SetInstance(string playerName, string factionName, int funds, string date) {
         Instance.Player = new Player(playerName);
-        Instance.Player.Faction = "empire";
+        Instance.Player.Faction = "newrepublic";
         Instance.Date = new Date(1840, DateSystem.ABY);
         Instance.Planets = new Graph<string, Planet>();
         Instance.MapCameraLocation = new Vector3(0f, 0f, 0f);
@@ -162,7 +161,7 @@ public class Game : MonoBehaviour
                 value.ToString("###,###,###,###,###,,.00") + " million";
         else
             valueString = 
-                value.ToString("###,###.00");
+                value.ToString("###,##0");
         return valueString + " credits";
     }
 }

@@ -13,10 +13,10 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [Serializable] public class Budget {
-    public float Military, LawEnforcement, Health;
+    public float Military, PublicSafety, Health, Education, Balance;
 
     private void InitInstance() {
-        Military = LawEnforcement = Health = 0;
+        Military = PublicSafety = Health = Education = Balance = 0;
     }
     public Budget() {
         InitInstance();
@@ -27,11 +27,11 @@ using System.Xml.Serialization;
         else
             Military = GetSurplus();
     }
-    public void SetLawEnforcement(float value) {
-        if (GetSurplus() >= (value - LawEnforcement))
-            LawEnforcement = value;
+    public void SetPublicSafety(float value) {
+        if (GetSurplus() >= (value - PublicSafety))
+            PublicSafety = value;
         else
-            LawEnforcement = GetSurplus();
+            PublicSafety = GetSurplus();
     }
     public void SetHealth(float value) {
         if (GetSurplus() >= (value - Health))
@@ -40,6 +40,6 @@ using System.Xml.Serialization;
             Health = GetSurplus();
     }
     public float GetSurplus() {
-        return 1 - (Military + LawEnforcement + Health);
+        return 1 - (Military + PublicSafety + Health + Education);
     }
 }

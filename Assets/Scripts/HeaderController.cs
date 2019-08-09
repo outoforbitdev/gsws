@@ -14,6 +14,7 @@ public class HeaderController : MonoBehaviour
     {
         PlayerName.text = Game.Instance.Player.Character;
         FactionName.text = Game.Instance.GetFactionFromString(Game.Instance.Player.Faction).Name;
+        Funds.text = Game.CreditString(Game.GetPlayerGovernment().Budget.Balance);
         Date.text = Game.DateToString();
     }
 
@@ -24,6 +25,7 @@ public class HeaderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Funds.text = Game.CreditString(Game.GetPlayerGovernment().Budget.Balance);
+        Date.text = Game.DateToString();
     }
 }
