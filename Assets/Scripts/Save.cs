@@ -18,9 +18,15 @@ public class Save : MonoBehaviour {
         string saveName = "TestSave";
         string directory = Application.persistentDataPath + "/Data/Saves/" + saveName + "/";
         Directory.CreateDirectory(directory);
+
         new Serializer<List<Planet>>().Serialize(directory + "planets.xml", Game.Instance.Planets.Values());
+
         new Serializer<Faction>().SerializeDictionary(directory + "factions.xml", Game.Instance.Factions);
+
         new Serializer<Government>().SerializeDictionary(directory + "governments.xml", Game.Instance.Governments);
+        
+        new Serializer<Character>().SerializeDictionary(directory + "characters.xml", Game.Instance.Characters);
+
         Debug.Log(directory);
     }
 }

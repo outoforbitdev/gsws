@@ -12,6 +12,7 @@ public partial class Game : MonoBehaviour
     public Graph<string, Planet> Planets;
     public Dictionary<string, Faction> Factions;
     public Dictionary<string, Government> Governments;
+    public Dictionary<string, Character> Characters;
     public Vector3 MapCameraLocation;
 
     void Awake () {
@@ -109,6 +110,9 @@ public partial class Game : MonoBehaviour
         Governments = new Dictionary<string, Government>();
         foreach(Government aGovernment in governmentList)
             Governments.Add(aGovernment.ID, aGovernment);
+    }
+    private void LoadCharacters(string directory) {
+
     }
     static public Planet GetPlanetFromString(string planet) {
         return Game.Instance.Planets.Find(planet);
