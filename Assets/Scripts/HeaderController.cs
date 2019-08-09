@@ -12,10 +12,9 @@ public class HeaderController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerName.text = Game.Instance.Player.Character.Name;
-        FactionName.text = Game.Instance.Faction.Name;
+        PlayerName.text = Game.Instance.Player.Character;
+        FactionName.text = Game.Instance.GetFactionFromString(Game.Instance.Player.Faction).Name;
         Date.text = Game.DateToString();
-        // Funds.text = (Game.Instance.Faction.Funds.ToString() + " credits");
     }
 
     void SaveHeader() {

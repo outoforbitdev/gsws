@@ -10,9 +10,10 @@
 using System;
 
 public class Player {
-    public Character Character { get; }
+    public string Character;
+    public string Faction;
 
     public Player(string name) {
-        this.Character = new Character(name);
+        // this.Character = new Character(name);
     }
 }

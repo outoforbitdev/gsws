@@ -32,4 +32,7 @@ public class LoadSceneOnClick : MonoBehaviour
     public void LoadMap() {
         SceneManager.LoadScene((int)Scenes.Map);
     }
+    public void LoadMainMenu() {
+        SceneManager.LoadScene((int)Scenes.MainMenu);
+    }
 }

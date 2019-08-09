@@ -3,7 +3,7 @@
 //                                 Faction.cs                                 //
 //                               Faction class                                //
 //              Created by: Jarett (Jay) Mirecki, July 27, 2019               //
-//             Modified by: Jarett (Jay) Mirecki, August 07, 2019             //
+//             Modified by: Jarett (Jay) Mirecki, August 08, 2019             //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -26,9 +26,9 @@ public class Relationship {
 [Serializable]
 public class Faction {
     [XmlAttribute]
-    public string ID, Name, Government, Military, Color;
+    public string ID;
+    public string Name, Government, Military, Color;
     public List<Relationship> Relations;
-    public List<string> Planets;
 
     [Serializable]
     public struct Relationship {
@@ -42,7 +42,6 @@ public class Faction {
 
     private void InitInstance() {
         Relations = new List<Relationship>();
-        Planets = new List<string>();
         Name = ID = Government = Military = Color = "";
 
     }

@@ -29,7 +29,13 @@ using System.Xml.Serialization;
         this.Neighbors = neighbors;
     }
     public float Value() {
-        return Wealth * Population + Productivity * Industrialization;
+        return ResidentialValue() + IndustrialValue();
+    }
+    public float ResidentialValue() {
+        return Wealth * Population;
+    }
+    public float IndustrialValue() {
+        return Productivity * Industrialization;
     }
     public string ValueString() {
         float value = Value();
