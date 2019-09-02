@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class TimeController : MonoBehaviour
 {
     void Start() {
-        Debug.Log(Game.Instance.IsInvoking("AdvanceTime"));
         gameObject.GetComponent<Toggle>().isOn = Game.Instance.IsInvoking("AdvanceTime");
         gameObject.GetComponent<Toggle>().onValueChanged.AddListener((value) => {
             OnChange(value);

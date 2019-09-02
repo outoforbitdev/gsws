@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CampaignController : MonoBehaviour
 {
-    private List<Campaign> CampaignList;
+    public List<Campaign> CampaignList;
     public Dropdown Campaigns;
     public Dropdown Factions;
     // Start is called before the first frame update
@@ -22,7 +22,6 @@ public class CampaignController : MonoBehaviour
         Campaigns.RefreshShownValue();
         Campaigns.onValueChanged.AddListener((value) => UpdateFactions(value));
         UpdateFactions(0);
-        Debug.Log(CampaignList.Count);
     }
     public void UpdateFactions(int index) {
         Factions.ClearOptions();

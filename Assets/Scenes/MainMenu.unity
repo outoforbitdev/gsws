@@ -175,6 +175,7 @@ MonoBehaviour:
   playername: {fileID: 1468897663}
   era: {fileID: 852322658}
   faction: {fileID: 736790650}
+  campaignControl: {fileID: 0}
   Object: {fileID: 0}
 --- !u!114 &63889811
 MonoBehaviour:
@@ -6065,6 +6066,7 @@ MonoBehaviour:
   playername: {fileID: 342053574}
   era: {fileID: 1948856178}
   faction: {fileID: 542275819}
+  campaignControl: {fileID: 1432729221}
   Object: {fileID: 0}
 --- !u!1 &1367245954
 GameObject:
@@ -6231,7 +6233,6 @@ GameObject:
   - component: {fileID: 1386645191}
   - component: {fileID: 1386645193}
   - component: {fileID: 1386645192}
-  - component: {fileID: 1386645194}
   - component: {fileID: 1386645195}
   m_Layer: 5
   m_Name: NewGameMenu
@@ -6305,20 +6306,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386645190}
   m_CullTransparentMesh: 0
---- !u!114 &1386645194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386645190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd554e68816abd4789f3f68eb20b277, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Campaigns: {fileID: 1948856178}
-  Factions: {fileID: 542275819}
 --- !u!114 &1386645195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6453,6 +6440,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400457850}
   m_CullTransparentMesh: 0
+--- !u!1 &1432729220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432729222}
+  - component: {fileID: 1432729221}
+  m_Layer: 0
+  m_Name: CampaignController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1432729221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432729220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd554e68816abd4789f3f68eb20b277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CampaignList: []
+  Campaigns: {fileID: 1948856178}
+  Factions: {fileID: 542275819}
+--- !u!4 &1432729222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432729220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4254537, y: 0.77521855, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1468897662
 GameObject:
   m_ObjectHideFlags: 0
@@ -7878,6 +7911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491202b8014581f43bcc25554201c2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Date:
+    DateInt: 0
   MapCameraLocation: {x: 0, y: 0, z: 0}
 --- !u!4 &1969569928
 Transform:

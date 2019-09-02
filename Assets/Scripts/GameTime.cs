@@ -26,11 +26,9 @@ public partial class Game : MonoBehaviour
 
     }
     public void AdvanceWeek() {
-        Debug.Log("week");
 
     }
     public void AdvanceMonth() {
-        Debug.Log("month");
         float residentialValue, commercialValue, totalRevenue;
         foreach (Government aGovernment in new List<Government>(Governments.Values)) {
             residentialValue = commercialValue = totalRevenue = 0f;
@@ -38,14 +36,14 @@ public partial class Game : MonoBehaviour
                 residentialValue += Game.GetPlanetFromString(planetName).ResidentialValue();
                 commercialValue += Game.GetPlanetFromString(planetName).IndustrialValue();
             }
-            totalRevenue = residentialValue * aGovernment.ResidentialTax + commercialValue * aGovernment.CommercialTax;
+            totalRevenue = 
+                residentialValue * aGovernment.ResidentialTax + commercialValue * aGovernment.CommercialTax;
             totalRevenue = totalRevenue / (368f/12f);
-            aGovernment.Budget.Balance += aGovernment.Budget.GetSurplus() * totalRevenue;
-            Debug.Log(aGovernment.Budget.Balance);
+            aGovernment.Budget.Balance += 
+                aGovernment.Budget.GetSurplus() * totalRevenue;
         }
     }
     public void AdvanceYear() {
-        Debug.Log("year");
 
     }
 }

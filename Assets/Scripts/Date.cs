@@ -1,7 +1,9 @@
 using System;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 public enum DateSystem { ABY }
-public class Date {
+[Serializable] public class Date {
     private const int WeekLength = 7;
     private const int MonthLength = 28;
     private const int YearLength = 368;

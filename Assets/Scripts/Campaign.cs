@@ -17,6 +17,7 @@ using System.Collections.Generic;
     public string Name;
     public List<string> FactionNames;
     public List<string> FactionIDs;
+    public Date Date;
 
     public Campaign() {
 

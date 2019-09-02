@@ -7,7 +7,7 @@ using JMSuite.Collections;
 public partial class Game : MonoBehaviour
 {
     public static Game Instance;
-    private Date Date;
+    public Date Date;
     public Player Player;
     public Graph<string, Planet> Planets;
     public Dictionary<string, Faction> Factions;
@@ -25,7 +25,6 @@ public partial class Game : MonoBehaviour
     }
     public static void SetInstance(string playerName, string factionName, int funds, string date) {
         Instance.Player = new Player(playerName);
-        Instance.Player.Faction = "newrepublic";
         Instance.Date = new Date(1840, DateSystem.ABY);
         Instance.Planets = new Graph<string, Planet>();
         Instance.MapCameraLocation = new Vector3(0f, 0f, 0f);
@@ -33,11 +32,13 @@ public partial class Game : MonoBehaviour
     public static string DateToString() {
         return Instance.Date.ToString();
     }
-    public static void InitCampaign(string campaignName) {
+    public static void InitCampaign(string campaignName, string factionID, Date date) {
         string directory = 
             Application.persistentDataPath + "/Data/Campaigns/" + campaignName + "/";
         Debug.Log(directory);
         Debug.Log(Directory.GetCurrentDirectory());
+        Instance.Player.Faction = factionID;
+        Instance.Date = date;
         Instance.LoadPlanets(directory);
         Instance.LoadGovernments(directory);
         Instance.LoadFactions(directory);

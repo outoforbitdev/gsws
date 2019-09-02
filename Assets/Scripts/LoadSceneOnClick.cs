@@ -10,6 +10,7 @@ public class LoadSceneOnClick : MonoBehaviour
     public InputField playername;
     public Dropdown era;
     public Dropdown faction;
+    public CampaignController campaignControl;
     public GameObject Object;
     private enum Scenes { MainMenu, Game, Map };
     // public Game game;
@@ -17,17 +18,17 @@ public class LoadSceneOnClick : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
     public void LoadGame() {
-        string time = "";
+        string campaign;
         string factions;
-        if (era.value == 0)
-            time = "183 ABY";
-        if (faction.value == 0)
-            factions = "New Republic";
-        else
-            factions = "Galactic Empire";
-        Game.SetInstance(playername.text, factions, 1000, time);
+        Date date;
+
+        campaign = campaignControl.CampaignList.ToArray()[era.value].ID;
+        factions = campaignControl.CampaignList.ToArray()[era.value].FactionIDs.ToArray()[faction.value];
+        date = campaignControl.CampaignList.ToArray()[era.value].Date;
+
+        Game.SetInstance(playername.text, factions, 1000, date.ToString());
+        Game.InitCampaign(campaign, factions, date);
         SceneManager.LoadScene((int)Scenes.Game);
-        Game.InitCampaign("PostEndor");
     }
     public void LoadMap() {
         SceneManager.LoadScene((int)Scenes.Map);

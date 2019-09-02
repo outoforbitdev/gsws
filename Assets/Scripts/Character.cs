@@ -26,7 +26,11 @@ using System.Collections.Generic;
         Militaries = new List<string>();
         Units = new List<string>();
     }
+    public Character() {
+        InitInstance();
+    }
     public Character(string name) {
+        InitInstance();
         this.Name = name;
     }
 }

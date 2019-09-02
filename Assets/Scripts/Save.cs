@@ -25,7 +25,9 @@ public class Save : MonoBehaviour {
 
         new Serializer<Government>().SerializeDictionary(directory + "governments.xml", Game.Instance.Governments);
         
-        new Serializer<Character>().SerializeDictionary(directory + "characters.xml", Game.Instance.Characters);
+        // new Serializer<Character>().SerializeDictionary(directory + "characters.xml", Game.Instance.Characters);
+
+        new Serializer<Date>().Serialize(directory + "date.xml", Game.Instance.Date);
 
         Debug.Log(directory);
     }
