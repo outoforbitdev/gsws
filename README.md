@@ -3,7 +3,7 @@
 A simulation of the Star Wars Galaxy. This project is being developed in Unity 2019.2.0. This is the same project that was under development in C++ and can now be found in [this repository](https://github.com/jaymirecki/gsws-deprecated).
 
 # The Vision
-The eventual goal of this project is to be able to simulate a variety of aspects of the Star Wars Legends galaxy, including:
+The eventual goal of this project is to be able to simulate a variety of aspects of the Star Wars galaxy, including:
 
 * Government Management. Think SimCity Lite. Adjusting taxes, passing measures, with every decision affecting the satisfaction of the citizens. Potential for rebellion if the citizens grow too unhappy. Overseeing the budget
 * Politics. Elections for positions, with political ideology scaling and branches of government resulting in diverse activities in non user-controlled governments.
@@ -36,12 +36,14 @@ The following is a roadmap for the development of new features:
 * News
 
 ## User Change Log
-### v0.1.1-alpha.4
-
-### v0.1.1-alpha.3
-* Load and save features are now available.
 
 ## Developer Change Log
+### v0.2.0-alpha.0
+* Home screen and main menu
+* New game menu
+* Main game screen
+* Map
+* Time advancement
 ### v0.1.1-alpha.4
 * Encode and Decode Planet objects
 * Graph created to store planets. Allows for lookup and distance calculations.
@@ -62,57 +64,17 @@ The following is a roadmap for the development of new features:
 # How to interact with the project
 ## Getting Started
 
-To compile: 
-```
-csc.exe -recurse:*.cs
-```
-Make sure to use csc.exe for C#, NOT the Linux csc command for Scheme
-
-To run in Linux terminal: 
-```
-mono gsws.exe
-```
-To run from Windows Explorer, just double-click the .exe
+Open the project in Unity
 
 ### Prerequisites
 
-Use the csc compiler, likely located here (if using the LSW for Ubuntu)
-
-```
-/mnt/c/Windows/Microsoft.NET/Framework/vX.X/csc.exe
-```
-
-### Installing
-
-Change line 2 of *create.sh* to reflect your working directory:
-
-```
-compile="/mnt/c/Windows/Microsoft.NET/Framework/v4.0.30319/csc.exe -recurse:*.cs"
-```
-
-Change line 7 of *create.sh* to reflect your working directory:
-
-```
-output="/mnt/c/Users/Jay/Documents/Jay's Documents/coding/starwars/gsws/compile/real.out"
-```
-
+Unity 2019.2.0
 Open the folder in your favorite editor or IDE.
-
-### File Organization
-* gsws: main repository with executable and shell scripts for compiling and running
-    * code: repository with the code for the project
-        * init: code to setup the simulator (namespace Initialization)
-        * ui: implementation of menus and console display (namespace UI)
-    * compile: repository with compile logs for ease of testing
-
-## Running the tests
-
-Tests coming soon.
 
 ## Built With
 
 * [Microsoft .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net472) - To compile and run on Windows
-* [Mono](https://www.mono-project.com/download/stable/) - To compile and run on Linux
+* [Unity]()
 * [Visual Studio Code](https://code.visualstudio.com/) - The editor used
 
 ## Authors
