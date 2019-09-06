@@ -35,9 +35,10 @@ The following is a roadmap for the development of new features:
 * Galactic Campaigns
 * News
 
-## User Change Log
 
 ## Developer Change Log
+### v0.2.0-alpha.1
+* UI for viewing orbiting fleets on map
 ### v0.2.0-alpha.0
 * Home screen and main menu
 * New game menu
