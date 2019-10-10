@@ -3,7 +3,7 @@
 //                                   Map.cs                                   //
 //                                  Map class                                 //
 //              Created by: Jarett (Jay) Mirecki, July 28, 2019               //
-//             Modified by: Jarett (Jay) Mirecki, August 07, 2019             //
+//            Modified by: Jarett (Jay) Mirecki, October 09, 2019             //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -14,9 +14,10 @@ using UnityEngine.UI;
 using TMPro;
 using System.Xml.Serialization;
 using System.IO;
-using JMSuite.Collections;
 using System;
 using System.Drawing;
+using GSWS;
+using JMSuite.Collections;
 
 public class Map : MonoBehaviour
 {
@@ -27,16 +28,17 @@ public class Map : MonoBehaviour
     public GameObject MiniMapPlanet;
     private bool Centered = true;
     private Vector3 CenteredPosition = new Vector3(0f, 0f, 8f);
+    static private float scaleFactor = 0.2f;
 
     void Start() {
-        foreach (Planet aPlanet in Game.Instance.Planets.Values())
+        foreach (Planet aPlanet in Game.DB.GetPlanets().Values())
             addPlanet(aPlanet);
-        foreach (Graph<string, Planet>.Edge edge in Game.Instance.Planets.GetEdges(true))
+        foreach (Graph<string, Planet>.Edge edge in Game.DB.GetPlanets().GetEdges(true))
             addSpacelane(edge.Origin.Coordinates, edge.Destination.Coordinates);
         PlanetInfoBox.SetActive(false);
     }
     private void addPlanet(Planet currPlanet) {
-        Vector3 position = currPlanet.Coordinates.AsMapVector();
+        Vector3 position = AsMapVector(currPlanet.Coordinates);
         position.z = 0;
         var PlanetObject = Instantiate(PlanetDisplay,           
                                        position, 
@@ -46,7 +48,7 @@ public class Map : MonoBehaviour
             currPlanet.Name;
 
         var MiniMap = GameObject.Find("MiniMap");
-        var PlanetColor = System.Drawing.Color.FromName(Game.Instance.GetFactionFromString(currPlanet.Faction).Color);
+        var PlanetColor = System.Drawing.Color.FromName(Game.DB.GetFaction(currPlanet.Faction).Color);
         var MiniPlanet = Instantiate(MiniMapPlanet, MiniMap.transform);
         MiniPlanet.transform.localPosition = miniMapPosition(currPlanet.Coordinates);
         MiniPlanet.GetComponent<Text>().color = 
@@ -56,9 +58,9 @@ public class Map : MonoBehaviour
     private void addSpacelane(Coordinate Start, Coordinate End) {
         float angle = Start.MapAngle(End);
 
-        float medX = (Start.AsMapVector().x + End.AsMapVector().x) / 2;
-        float medY = (Start.AsMapVector().y + End.AsMapVector().y) / 2;
-        float medZ = (Start.AsMapVector().z + End.AsMapVector().z) / 2;
+        float medX = (AsMapVector(Start).x + AsMapVector(End).x) / 2;
+        float medY = (AsMapVector(Start).y + AsMapVector(End).y) / 2;
+        float medZ = (AsMapVector(Start).z + AsMapVector(End).z) / 2;
         medZ = 0;
 
         float distance = Start.MapDistanceTo(End);
@@ -85,8 +87,8 @@ public class Map : MonoBehaviour
             if (Physics.Raycast(ray, out hit)) {
                 Debug.Log(hit.transform.name);
                 if (hit.transform.name == "Sphere") {
-                    foreach(Planet aPlanet in Game.Instance.Planets.Values()) {
-                        Vector3 position = aPlanet.Coordinates.AsMapVector();
+                    foreach(Planet aPlanet in Game.DB.GetPlanets().Values()) {
+                        Vector3 position = AsMapVector(aPlanet.Coordinates);
                         position.z = 0;
                         if (position == hit.transform.position) {
                             PlanetInfoBoxController InfoBox = GameObject.Find("PlanetInfoBoxController").GetComponent<PlanetInfoBoxController>();
@@ -106,7 +108,7 @@ public class Map : MonoBehaviour
         Vector3 camPosition = Camera.main.transform.position;
         if (position.x == camPosition.x && position.y == camPosition.y && camPosition.z == 8f) {
             Centered = true;
-            Game.Instance.MapCameraLocation = camPosition;
+            Game.MapCameraLocation = camPosition;
             return;
         }
         Vector3 newCamPosition = 
@@ -127,6 +129,12 @@ public class Map : MonoBehaviour
         Debug.Log(newCamPosition);
 
         Camera.main.transform.Translate(newCamPosition);
+    }
+
+    static public Vector3 AsMapVector(Coordinate c) {
+        return new Vector3(c.X * scaleFactor * -1,
+                           c.Y * scaleFactor,
+                           c.Z * scaleFactor);
     }
 }
 

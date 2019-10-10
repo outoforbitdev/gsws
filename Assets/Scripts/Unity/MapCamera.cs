@@ -3,21 +3,23 @@
 //                                MapCamera.cs                                //
 //                            Map Camera controller                           //
 //              Created by: Jarett (Jay) Mirecki, July 28, 2019               //
-//             Modified by: Jarett (Jay) Mirecki, August 05, 2019             //
+//            Modified by: Jarett (Jay) Mirecki, October 09, 2019             //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
 using UnityEngine;
+using GSWS;
+
 public class MapCamera : MonoBehaviour {
     private float speed = 1f;
     private float zLowBoundary = 8f;
     private float xLowBoundary = -100f;
-    private float yLowBoundary = new Coordinate(106, -610, 4).AsMapVector().y;
+    private float yLowBoundary = Map.AsMapVector(new Coordinate(106, -610, 4)).y;
     private float zHighBoundary = 100f;
     private float xHighBoundary = 100f;
     private float yHighBoundary = 100f;
     void Start() {
-        transform.position = Game.Instance.MapCameraLocation;
+        transform.position = Game.MapCameraLocation;
     }
     void Update() {
         float zoomedSpeed = speed * transform.position.z;
@@ -64,6 +66,6 @@ public class MapCamera : MonoBehaviour {
         if (boundary.y > yHighBoundary)
             boundary.y = yHighBoundary;
         transform.position = boundary;
-        Game.Instance.MapCameraLocation = transform.position;
+        Game.MapCameraLocation = transform.position;
     }
 }

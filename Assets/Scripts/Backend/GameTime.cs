@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using JMSuite.Collections;
+using GSWS;
 
 public partial class Game : MonoBehaviour
 {
@@ -13,35 +13,29 @@ public partial class Game : MonoBehaviour
         CancelInvoke("AdvanceTime");
     }
     public void AdvanceTime() {
-        AdvanceDay();
-        if (Date.SimWeek())
-            AdvanceWeek();
-        if (Date.SimMonth())
-            AdvanceMonth();
-        if (Date.SimYear())
-            AdvanceYear();
+        Game.DB.AdvanceTime();
     }
     public void AdvanceDay() {
-        Date.DateInt++;
+        // Date.DateInt++;
 
     }
     public void AdvanceWeek() {
 
     }
     public void AdvanceMonth() {
-        float residentialValue, commercialValue, totalRevenue;
-        foreach (Government aGovernment in new List<Government>(Governments.Values)) {
-            residentialValue = commercialValue = totalRevenue = 0f;
-            foreach (string planetName in aGovernment.MemberPlanets) {
-                residentialValue += Game.GetPlanetFromString(planetName).ResidentialValue();
-                commercialValue += Game.GetPlanetFromString(planetName).IndustrialValue();
-            }
-            totalRevenue = 
-                residentialValue * aGovernment.ResidentialTax + commercialValue * aGovernment.CommercialTax;
-            totalRevenue = totalRevenue / (368f/12f);
-            aGovernment.Budget.Balance += 
-                aGovernment.Budget.GetSurplus() * totalRevenue;
-        }
+        // float residentialValue, commercialValue, totalRevenue;
+        // foreach (Government aGovernment in new List<Government>(Governments.Values)) {
+        //     residentialValue = commercialValue = totalRevenue = 0f;
+        //     foreach (string planetName in aGovernment.MemberPlanets) {
+        //         residentialValue += Game.DB.GetPlanet(planetName).ResidentialValue();
+        //         commercialValue += Game.DB.GetPlanet(planetName).IndustrialValue();
+        //     }
+        //     totalRevenue = 
+        //         residentialValue * aGovernment.ResidentialTax + commercialValue * aGovernment.CommercialTax;
+        //     totalRevenue = totalRevenue / (368f/12f);
+        //     aGovernment.Budget.Balance += 
+        //         aGovernment.Budget.GetSurplus() * totalRevenue;
+        // }
     }
     public void AdvanceYear() {
 

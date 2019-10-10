@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GSWS;
 
 public class HeaderController : MonoBehaviour
 {
@@ -12,10 +13,10 @@ public class HeaderController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerName.text = Game.Instance.Player.Character;
-        FactionName.text = Game.Instance.GetFactionFromString(Game.Instance.Player.Faction).Name;
-        Funds.text = Game.CreditString(Game.GetPlayerGovernment().Budget.Balance);
-        Date.text = Game.DateToString();
+        PlayerName.text = Game.DB.GetPlayerCharacter().Name;
+        FactionName.text = Game.DB.GetPlayerFaction().Name;
+        Funds.text = Game.CreditString(Game.DB.GetPlayerGovernment().Budget.Balance);
+        Date.text = Game.DB.GetDateString();
     }
 
     void SaveHeader() {
@@ -25,7 +26,7 @@ public class HeaderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Funds.text = Game.CreditString(Game.GetPlayerGovernment().Budget.Balance);
-        Date.text = Game.DateToString();
+        Funds.text = Game.CreditString(Game.DB.GetPlayerGovernment().Budget.Balance);
+        Date.text = Game.DB.GetDateString();
     }
 }

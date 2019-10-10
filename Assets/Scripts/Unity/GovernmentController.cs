@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GSWS;
 
 public class GovernmentController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class GovernmentController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Government playerGovernment = Game.GetPlayerGovernment();
+        Government playerGovernment = Game.DB.GetPlayerGovernment();
         GovernmentName.text = playerGovernment.Name;
         ResidentialTaxRate.text = (playerGovernment.ResidentialTax * 100f).ToString("#0.0");
         CommercialTaxRate.text = (playerGovernment.CommercialTax * 100f).ToString("#0.0");
@@ -19,8 +20,8 @@ public class GovernmentController : MonoBehaviour
         CommercialSlider.value = playerGovernment.CommercialTax;
         ResidentialValue = CommercialValue = 0;
         foreach (string planetName in playerGovernment.MemberPlanets) {
-            ResidentialValue += Game.GetPlanetFromString(planetName).ResidentialValue();
-            CommercialValue += Game.GetPlanetFromString(planetName).IndustrialValue();
+            ResidentialValue += Game.DB.GetPlanet(planetName).ResidentialValue();
+            CommercialValue += Game.DB.GetPlanet(planetName).IndustrialValue();
         }
         AnnualRevenue.text = (ResidentialValue * playerGovernment.ResidentialTax + CommercialValue * playerGovernment.CommercialTax).ToString();
     }
@@ -28,7 +29,7 @@ public class GovernmentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Government playerGovernment = Game.GetPlayerGovernment();
+        Government playerGovernment = Game.DB.GetPlayerGovernment();
         playerGovernment.ResidentialTax = ResidentialSlider.value;
         playerGovernment.CommercialTax = CommercialSlider.value;
         ResidentialTaxRate.text = (playerGovernment.ResidentialTax * 100f).ToString("#0.0");

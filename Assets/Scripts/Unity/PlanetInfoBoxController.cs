@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using GSWS;
 
 public class PlanetInfoBoxController : MonoBehaviour
 {
@@ -24,10 +25,7 @@ public class PlanetInfoBoxController : MonoBehaviour
         Physical.text =
             CurrentPlanet.Class + " planet\nType " + CurrentPlanet.AtmosphereType.ToString() + " atmosphere";
         Faction faction;
-        if (Game.Instance.Factions.TryGetValue(CurrentPlanet.Faction, out faction))
-            Faction.text = faction.Name;
-        else
-            Faction.text = CurrentPlanet.Faction;
+        Faction.text = Game.DB.GetFaction(CurrentPlanet.Faction).Name;
         Population.text = 
             ((CurrentPlanet.Population)).ToString("###,###,###,###,,") + " million " + CurrentPlanet.Demonym;
         Value.text = CurrentPlanet.ValueString();
