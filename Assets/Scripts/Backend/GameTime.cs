@@ -15,29 +15,4 @@ public partial class Game : MonoBehaviour
     public void AdvanceTime() {
         Game.DB.AdvanceTime();
     }
-    public void AdvanceDay() {
-        // Date.DateInt++;
-
-    }
-    public void AdvanceWeek() {
-
-    }
-    public void AdvanceMonth() {
-        // float residentialValue, commercialValue, totalRevenue;
-        // foreach (Government aGovernment in new List<Government>(Governments.Values)) {
-        //     residentialValue = commercialValue = totalRevenue = 0f;
-        //     foreach (string planetName in aGovernment.MemberPlanets) {
-        //         residentialValue += Game.DB.GetPlanet(planetName).ResidentialValue();
-        //         commercialValue += Game.DB.GetPlanet(planetName).IndustrialValue();
-        //     }
-        //     totalRevenue = 
-        //         residentialValue * aGovernment.ResidentialTax + commercialValue * aGovernment.CommercialTax;
-        //     totalRevenue = totalRevenue / (368f/12f);
-        //     aGovernment.Budget.Balance += 
-        //         aGovernment.Budget.GetSurplus() * totalRevenue;
-        // }
-    }
-    public void AdvanceYear() {
-
-    }
 }
