@@ -12,7 +12,7 @@ public class LoadSceneOnClick : MonoBehaviour
     public Dropdown faction;
     public CampaignController campaignControl;
     public GameObject Object;
-    private enum Scenes { MainMenu, Game, Map };
+    private enum Scenes { MainMenu, Game, Map, Datapad };
     // public Game game;
     public void LoadByIndex(int sceneIndex) {
         SceneManager.LoadScene(sceneIndex);
@@ -32,6 +32,9 @@ public class LoadSceneOnClick : MonoBehaviour
     }
     public void LoadMap() {
         SceneManager.LoadScene((int)Scenes.Map);
+    }
+    public void LoadDatapad() {
+        SceneManager.LoadScene((int)Scenes.Datapad);
     }
     public void LoadMainMenu() {
         SceneManager.LoadScene((int)Scenes.MainMenu);
