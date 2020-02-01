@@ -24,7 +24,6 @@ public class PlanetInfoBoxController : MonoBehaviour
             CurrentPlanet.Coordinates.ToString() + "\n" + CurrentPlanet.System + "\n" + CurrentPlanet.Sector + "\n" + CurrentPlanet.Region;
         Physical.text =
             CurrentPlanet.Class + " planet\nType " + CurrentPlanet.AtmosphereType.ToString() + " atmosphere";
-        Faction faction;
         Faction.text = Game.DB.GetFaction(CurrentPlanet.Faction).Name;
         Population.text = 
             ((CurrentPlanet.Population)).ToString("###,###,###,###,,") + " million " + CurrentPlanet.Demonym;
