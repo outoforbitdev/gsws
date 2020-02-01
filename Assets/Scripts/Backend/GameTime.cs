@@ -13,6 +13,8 @@ public partial class Game : MonoBehaviour
         CancelInvoke("AdvanceTime");
     }
     public void AdvanceTime() {
+        Debug.Log(DB.GetDateString());
         Game.DB.AdvanceTime();
+        Debug.Log("b00");
     }
 }

@@ -28,7 +28,7 @@ public partial class Game : MonoBehaviour
             Application.persistentDataPath + "/Data/Campaigns/" + campaignName + "/";
         Debug.Log(directory);
         Debug.Log(Directory.GetCurrentDirectory());
-        DB.LoadDatabase(directory);
+        DB.LoadDatabase(directory, DB.GetPlayer());
     }
     // Start is called before the first frame update
     void Start()
