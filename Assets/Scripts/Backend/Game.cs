@@ -19,7 +19,7 @@ public partial class Game : MonoBehaviour
         }
     }
     public static void SetInstance(string playerName, string factionName, int funds, string date) {
-        DB = new Database(new Player(playerName, factionName), 
+        DB = new Database(new Player(), 
                           new Date(1840, DateSystem.ABY));
         MapCameraLocation = new Vector3(0f, 0f, 0f);
     }
@@ -28,7 +28,7 @@ public partial class Game : MonoBehaviour
             Application.persistentDataPath + "/Data/Campaigns/" + campaignName + "/";
         Debug.Log(directory);
         Debug.Log(Directory.GetCurrentDirectory());
-        DB.LoadDatabase(directory, DB.GetPlayer());
+        DB.LoadDatabase(directory, factionID);
     }
     // Start is called before the first frame update
     void Start()

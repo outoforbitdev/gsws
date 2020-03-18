@@ -12,16 +12,16 @@ public class GovernmentController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Government playerGovernment = Game.DB.GetPlayerGovernment();
+        Government playerGovernment = Game.DB.Player.Faction;
         GovernmentName.text = playerGovernment.Name;
         ResidentialTaxRate.text = (playerGovernment.ResidentialTax * 100f).ToString("#0.0");
         CommercialTaxRate.text = (playerGovernment.CommercialTax * 100f).ToString("#0.0");
         ResidentialSlider.value = playerGovernment.ResidentialTax;
         CommercialSlider.value = playerGovernment.CommercialTax;
         ResidentialValue = CommercialValue = 0;
-        foreach (string planetName in playerGovernment.MemberPlanets) {
-            ResidentialValue += Game.DB.GetPlanet(planetName).ResidentialValue();
-            CommercialValue += Game.DB.GetPlanet(planetName).IndustrialValue();
+        foreach (Planet p in playerGovernment.MemberPlanets) {
+            ResidentialValue += p.ResidentialValue();
+            // CommercialValue += p.IndustrialValue();
         }
         AnnualRevenue.text = (ResidentialValue * playerGovernment.ResidentialTax + CommercialValue * playerGovernment.CommercialTax).ToString();
     }
@@ -29,7 +29,7 @@ public class GovernmentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Government playerGovernment = Game.DB.GetPlayerGovernment();
+        Government playerGovernment = Game.DB.Player.Faction;
         playerGovernment.ResidentialTax = ResidentialSlider.value;
         playerGovernment.CommercialTax = CommercialSlider.value;
         ResidentialTaxRate.text = (playerGovernment.ResidentialTax * 100f).ToString("#0.0");

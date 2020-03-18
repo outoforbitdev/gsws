@@ -9,7 +9,7 @@ public class PlanetInfoBoxController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CurrentPlanet = new Planet("[Planet Name]", new Coordinate(0,0,0), new string[0]);
+        CurrentPlanet = new Planet();
     }
 
     void SaveHeader() {
@@ -21,10 +21,10 @@ public class PlanetInfoBoxController : MonoBehaviour
     {
         Name.text = CurrentPlanet.Name;
         Location.text = 
-            CurrentPlanet.Coordinates.ToString() + "\n" + CurrentPlanet.System + "\n" + CurrentPlanet.Sector + "\n" + CurrentPlanet.Region;
+            CurrentPlanet.Position.ToString() + "\n" + CurrentPlanet.System + "\n" + CurrentPlanet.Sector + "\n" + CurrentPlanet.Region;
         Physical.text =
-            CurrentPlanet.Class + " planet\nType " + CurrentPlanet.AtmosphereType.ToString() + " atmosphere";
-        Faction.text = Game.DB.GetFaction(CurrentPlanet.Faction).Name;
+            CurrentPlanet.Class + " planet\nType " + CurrentPlanet.Atmosphere + " atmosphere";
+        Faction.text = CurrentPlanet.Faction.Name;
         Population.text = 
             ((CurrentPlanet.Population)).ToString("###,###,###,###,,") + " million " + CurrentPlanet.Demonym;
         Value.text = CurrentPlanet.ValueString();

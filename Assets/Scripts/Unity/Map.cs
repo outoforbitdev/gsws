@@ -31,14 +31,15 @@ public class Map : MonoBehaviour
     static private float scaleFactor = 0.2f;
 
     void Start() {
-        foreach (Planet aPlanet in Game.DB.GetPlanets().Values())
+        foreach (Planet aPlanet in Game.DB.Planets.Values)
             addPlanet(aPlanet);
-        foreach (Graph<string, Planet>.Edge edge in Game.DB.GetPlanets().GetEdges(true))
-            addSpacelane(edge.Origin.Coordinates, edge.Destination.Coordinates);
+        foreach (JGraph<string>.Edge e in Game.DB.Map.Edges)
+            addSpacelane(Game.DB.Planets[e.Origin].Position, 
+                         Game.DB.Planets[e.Destination].Position);
         PlanetInfoBox.SetActive(false);
     }
     private void addPlanet(Planet currPlanet) {
-        Vector3 position = AsMapVector(currPlanet.Coordinates);
+        Vector3 position = AsMapVector(currPlanet.Position);
         position.z = 0;
         var PlanetObject = Instantiate(PlanetDisplay,           
                                        position, 
@@ -48,9 +49,9 @@ public class Map : MonoBehaviour
             currPlanet.Name;
 
         var MiniMap = GameObject.Find("MiniMap");
-        var PlanetColor = System.Drawing.Color.FromName(Game.DB.GetFaction(currPlanet.Faction).Color);
+        var PlanetColor = System.Drawing.Color.FromName(currPlanet.Faction.Color);
         var MiniPlanet = Instantiate(MiniMapPlanet, MiniMap.transform);
-        MiniPlanet.transform.localPosition = miniMapPosition(currPlanet.Coordinates);
+        MiniPlanet.transform.localPosition = miniMapPosition(currPlanet.Position);
         MiniPlanet.GetComponent<Text>().color = 
             new UnityEngine.Color(PlanetColor.R, PlanetColor.G, PlanetColor.B, PlanetColor.A);
         
@@ -87,8 +88,8 @@ public class Map : MonoBehaviour
             if (Physics.Raycast(ray, out hit)) {
                 Debug.Log(hit.transform.name);
                 if (hit.transform.name == "Sphere") {
-                    foreach(Planet aPlanet in Game.DB.GetPlanets().Values()) {
-                        Vector3 position = AsMapVector(aPlanet.Coordinates);
+                    foreach(Planet aPlanet in Game.DB.Planets.Values) {
+                        Vector3 position = AsMapVector(aPlanet.Position);
                         position.z = 0;
                         if (position == hit.transform.position) {
                             PlanetInfoBoxController InfoBox = GameObject.Find("PlanetInfoBoxController").GetComponent<PlanetInfoBoxController>();
