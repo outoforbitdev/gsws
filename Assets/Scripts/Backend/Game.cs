@@ -26,14 +26,13 @@ public partial class Game : MonoBehaviour
     public static void InitCampaign(string campaignName, string factionID, Date date) {
         string directory = 
             Application.persistentDataPath + "/Data/Campaigns/" + campaignName + "/";
-        Debug.Log(directory);
-        Debug.Log(Directory.GetCurrentDirectory());
         DB.LoadDatabase(directory, factionID);
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        Game.SetInstance("", "empire", 1000, "0ABY");
+        Game.InitCampaign("test", "empire", new Date());
     }
 
     // Update is called once per frame

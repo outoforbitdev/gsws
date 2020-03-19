@@ -2,8 +2,8 @@
 //                                                                            //
 //                                MapCamera.cs                                //
 //                            Map Camera controller                           //
-//              Created by: Jarett (Jay) Mirecki, July 28, 2019               //
-//            Modified by: Jarett (Jay) Mirecki, October 09, 2019             //
+//                   Created by: Jay Mirecki, July 28, 2019                   //
+//                  Modified by: Jay Mirecki, March 19, 2020                  //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -13,11 +13,14 @@ using GSWS;
 public class MapCamera : MonoBehaviour {
     private float speed = 1f;
     private float zLowBoundary = 8f;
-    private float xLowBoundary = -100f;
-    private float yLowBoundary = Map.AsMapVector(new Coordinate(106, -610, 4)).y;
+    private float xLowBoundary = 100f;
+    private float yLowBoundary = 
+        Map.AsMapVector(new Coordinate(106, -610, 4)).y;
     private float zHighBoundary = 100f;
-    private float xHighBoundary = 100f;
-    private float yHighBoundary = 100f;
+    private float xHighBoundary = 
+        Map.AsMapVector(new Coordinate(582, 210, 5)).x;
+    private float yHighBoundary = 
+        Map.AsMapVector(new Coordinate(582, 210, 5)).y;
     void Start() {
         transform.position = Game.MapCameraLocation;
     }
@@ -44,7 +47,7 @@ public class MapCamera : MonoBehaviour {
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
 
-            transform.Translate(new Vector3(0, 0, Input.GetAxis("Mouse ScrollWheel") * 10));
+            transform.Translate(new Vector3(0, 0, Input.GetAxis("Mouse ScrollWheel") * 100));
 
             Vector3 camPosition = transform.position;
             camPosition.x = mousePosition.x;
@@ -52,6 +55,10 @@ public class MapCamera : MonoBehaviour {
             if (transform.position.z > 8 && Input.GetAxis("Mouse ScrollWheel") > 0)
                 transform.position = camPosition;
         }
+        xHighBoundary = Map.XMax;
+        xLowBoundary = Map.XMin;
+        yHighBoundary = Map.YMax;
+        yLowBoundary = Map.YMin;
         Vector3 boundary = transform.position;
         if (boundary.z < zLowBoundary)
             boundary.z = zLowBoundary;
