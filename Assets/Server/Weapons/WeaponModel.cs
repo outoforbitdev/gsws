@@ -14,14 +14,68 @@ using System.Xml.Serialization;
 namespace GSWS.Assets.Server
 {
     [Serializable]
-    abstract public class WeaponModel
+    public class WeaponModel : Object
     {
-        [XmlAttribute] public string ID { get; set; }
+        #region Object Methods
+        public override void VerifySubGroups() { }
+        public override void UpdateValues(Database db) { }
+        public override string DatapadDescription() 
+        {
+            return Name;
+        }
+        public override void UpdateKeys() { }
+        public override void UpdateSuperGroups() { }
+        public override string ToString()
+        {
+            return Name;
+        }
+        #endregion
+        #region Properties
         public string Name { get; set; }
-        public float Damage { get; set; }
-        public float Accuracy { get; set; }
-        public int Capacity { get; set; }
-
+        private float _damage;
+        public float Damage
+        {
+            get
+            {
+                return _damage;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    _damage = value;
+                }
+            }
+        }
+        private float _accuracy;
+        public float Accuracy
+        {
+            get
+            {
+                return _accuracy;
+            }
+            set
+            {
+                if (value <= 1 && value >=0)
+                    _accuracy = value;
+            }
+        }
+        private int _capacity;
+        public int Capacity { 
+            get
+            {
+                return _capacity;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    _capacity = value;
+                }
+            }
+        }
+        #endregion
+        #region Constructors
         public WeaponModel() : this("", "", 0, 0, 0) { }
         public WeaponModel(string id, string name, float damage, float accuracy, int capacity)
         {
@@ -31,5 +85,6 @@ namespace GSWS.Assets.Server
             Accuracy= accuracy;
             Capacity = capacity;
         }
+        #endregion
     }
 }

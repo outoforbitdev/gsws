@@ -53,8 +53,8 @@
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseTest.cs" />
     <Compile Include="Date.cs" />
+    <Compile Include="Weapons\EmplacementWeaponModel.cs" />
     <Compile Include="Weapons\Weapon.cs" />
-    <Compile Include="Weapons\EmplacementWeapon.cs" />
     <Compile Include="Fleet.cs" />
     <Compile Include="Government.cs" />
     <Compile Include="Object.cs" />

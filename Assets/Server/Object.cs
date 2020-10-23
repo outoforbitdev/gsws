@@ -10,12 +10,17 @@
 //          integrity of objects and keys.                                    //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+using System;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
+
 namespace GSWS.Assets.Server
 {
-
+    [Serializable]
     abstract public class Object
     {
         private string _id;
+        [XmlAttribute]
         public string ID { 
             get
             {
@@ -23,7 +28,7 @@ namespace GSWS.Assets.Server
             } 
             set
             {
-                if (ID == null)
+                if (string.IsNullOrWhiteSpace(ID))
                 {
                     _id = value;
                 }

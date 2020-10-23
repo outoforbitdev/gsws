@@ -10,6 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSWS.Assets.Scripts", "Scri
 		{F038C401-D311-4873-8538-B37B3D420CA2} = {F038C401-D311-4873-8538-B37B3D420CA2}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSWS.Assets.Tests.Server", ".Tests\Server\GSWS.Assets.Tests.Server.csproj", "{B3AC3B3E-9E6D-46DD-9926-BC0915584983}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F038C401-D311-4873-8538-B37B3D420CA2} = {F038C401-D311-4873-8538-B37B3D420CA2}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +28,10 @@ Global
 		{FBB6C91D-E4A3-48B5-9F1D-6ED60B817216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBB6C91D-E4A3-48B5-9F1D-6ED60B817216}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB6C91D-E4A3-48B5-9F1D-6ED60B817216}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AC3B3E-9E6D-46DD-9926-BC0915584983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AC3B3E-9E6D-46DD-9926-BC0915584983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AC3B3E-9E6D-46DD-9926-BC0915584983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AC3B3E-9E6D-46DD-9926-BC0915584983}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
