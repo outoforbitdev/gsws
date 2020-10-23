@@ -48,7 +48,6 @@
     <Compile Include="Budget.cs" />
     <Compile Include="Campaign.cs" />
     <Compile Include="Character.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseTest.cs" />
@@ -68,8 +67,9 @@
     <Compile Include="ShipModel.cs" />
     <Compile Include="Weapon.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="References\" />
+    <Content Include="References\JMSuite.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

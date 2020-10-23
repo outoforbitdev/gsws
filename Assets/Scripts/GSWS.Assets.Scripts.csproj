@@ -41,8 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Backend\animationtest.cs" />
+    <Compile Include="Backend\CampaignController.cs" />
+    <Compile Include="Backend\DatapadController.cs" />
+    <Compile Include="Backend\GovernmentController.cs" />
+    <Compile Include="Backend\HeaderController.cs" />
+    <Compile Include="Backend\LoadSceneOnClick.cs" />
+    <Compile Include="Backend\Map.cs" />
+    <Compile Include="Backend\MapCamera.cs" />
+    <Compile Include="Backend\PlanetInfoBoxController.cs" />
+    <Compile Include="Backend\TimeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unity\animationtest.cs" />
+    <Compile Include="Unity\CampaignController.cs" />
+    <Compile Include="Unity\DatapadController.cs" />
+    <Compile Include="Unity\GovernmentController.cs" />
+    <Compile Include="Unity\HeaderController.cs" />
+    <Compile Include="Unity\LoadSceneOnClick.cs" />
+    <Compile Include="Unity\Map.cs" />
+    <Compile Include="Unity\MapCamera.cs" />
+    <Compile Include="Unity\PlanetInfoBoxController.cs" />
+    <Compile Include="Unity\TimeController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
