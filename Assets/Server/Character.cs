@@ -12,7 +12,8 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 
 [Serializable] public class Character {
     [XmlAttribute] public string ID;

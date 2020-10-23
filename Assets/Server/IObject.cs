@@ -10,7 +10,8 @@
 //          integrity of objects and keys.                                    //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 
 interface IObject {
     string ToString();

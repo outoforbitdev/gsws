@@ -9,7 +9,8 @@
 
 using System;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 
 public class Player {
     public string kCharacter, kFaction;

@@ -16,7 +16,8 @@ using System.Collections.Generic;
 using System.IO;
 using JMSuite.Collections;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 using SearchResult = KeyValuePair<string, Type>;
 using RankedResult = KeyValuePair<int, KeyValuePair<string, Type>>;
 public partial class Database {

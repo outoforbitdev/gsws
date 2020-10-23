@@ -17,7 +17,8 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using JMSuite.Collections;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 [Serializable] public class Fleet : IObject {
     #region Properties
     [XmlAttribute] public string ID;

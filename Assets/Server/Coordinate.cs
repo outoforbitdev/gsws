@@ -13,7 +13,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 
 [Serializable] public struct Coordinate {
     public int X;

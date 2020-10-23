@@ -17,7 +17,8 @@ using System.IO;
 using JMSuite.Collections;
 using System.Diagnostics;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 public partial class Database {
     #region Save
     public bool DoesSaveExist(string directory, string saveName) {

@@ -12,7 +12,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 
 [Serializable] public class Budget {
     public float Military, PublicSafety, Health, Education, Balance;

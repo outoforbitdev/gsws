@@ -22,7 +22,8 @@ using System;
 using System.Collections.Generic;
 using JMSuite.Collections;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
     public partial class Database {
         #region Members
         public JDictionary<string, Body> Bodies;

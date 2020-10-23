@@ -13,7 +13,8 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using JMSuite.Collections;
 
-namespace GSWS {
+namespace GSWS.Assets.Server
+{
 public enum Relationship { Ally, Neutral, Enemy };
 [Serializable] public class Government : IObject {
     #region Properties

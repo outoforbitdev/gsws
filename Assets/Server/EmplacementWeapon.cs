@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GSWS
+namespace GSWS.Assets.Server
 {
     class EmplacementWeapon : Weapon
     {
