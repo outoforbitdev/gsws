@@ -27,7 +27,7 @@ namespace GSWS.Assets.Server
         this.Z = Z;
     }
 
-    public override bool Equals(Object obj) {
+    public override bool Equals(System.Object obj) {
         if (!(obj is Coordinate))
             return false;
         Coordinate c = (Coordinate) obj;

@@ -14,14 +14,14 @@ using System.Text;
 
 namespace GSWS.Assets.Server
 {
-    class EmplacementWeapon : Weapon
+    class EmplacementWeaponModel : WeaponModel
     {
         public bool Independent { get; set; }
 
-        private new void InitInstance()
+        public EmplacementWeaponModel() : this("", "", 0, 0, 0, false) { }
+        public EmplacementWeaponModel(string id, string name, float damage, float accuracy, int capacity, bool independent): base(id, name, damage, accuracy, capacity)
         {
-            Independent = false;
-            base.InitInstance();
+            Independent = independent;
         }
     }
 }

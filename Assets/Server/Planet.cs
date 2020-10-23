@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace GSWS.Assets.Server
 {
-[Serializable] public class Planet : IObject {
+[Serializable] public class Planet : Object {
     #region Properties
     [XmlAttribute] public string ID;
     public string Name, Demonym, Description;
@@ -68,7 +68,7 @@ namespace GSWS.Assets.Server
     }
     #endregion
     #region Boiler Plate
-    public string DatapadDescription() {
+    public override string DatapadDescription() {
         string description = 
             Name + "\n\n" + 
             Position.ToString() + ", " + System + ", " + Sector + ", " + Region + "\n\n" +
@@ -78,7 +78,7 @@ namespace GSWS.Assets.Server
     public override string ToString() {
         return "{" + ID + ", " + Name + "}";
     }
-    public void UpdateValues(Database db) {
+    public override void UpdateValues(Database db) {
         Body body;
         if (db.Bodies.TryGetValue(ID, out body))
             Body = body;
@@ -86,16 +86,16 @@ namespace GSWS.Assets.Server
         if (db.Governments.TryGetValue(kGovernment, out government))
             Government = government;
     }
-    public void UpdateKeys() {
+    public override void UpdateKeys() {
         kGovernment = Government.ID;
     }
-    public void VerifySubGroups() {
+    public override void VerifySubGroups() {
         foreach (Fleet f in Fleets) {
             if (f.Orbiting != this)
                 Fleets.Remove(f);
         }
     }
-    public void UpdateSuperGroups() {
+    public override void UpdateSuperGroups() {
         Government.MemberPlanets.Add(this);
     }
     #endregion

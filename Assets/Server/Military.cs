@@ -19,7 +19,7 @@ using System.Xml.Serialization;
 
 namespace GSWS.Assets.Server
 {
-[Serializable] public class Military : IObject {
+[Serializable] public class Military : Object {
     #region Properties
     [XmlAttribute] public string ID;
     public string Name, Description;
@@ -77,12 +77,12 @@ namespace GSWS.Assets.Server
     public override string ToString() {
         return Name + "(Military)";
     }
-    public string DatapadDescription() {
+    public override string DatapadDescription() {
         return 
             Name + "\n\n" +
             Description;
     }
-    public void UpdateValues(Database db) {
+    public override void UpdateValues(Database db) {
         SuperMilitary = null;
         Government = null;
         if (kSuperMilitary != "")
@@ -90,7 +90,7 @@ namespace GSWS.Assets.Server
         else
             Government = db.Governments[kGovernment];
     }
-    public void UpdateKeys() {
+    public override void UpdateKeys() {
         kSuperMilitary = "";
         kGovernment = "";
         if (SuperMilitary != null)
@@ -98,7 +98,7 @@ namespace GSWS.Assets.Server
         else if (Government != null)
             kGovernment = Government.ID;
     }
-    public void VerifySubGroups() {
+    public override void VerifySubGroups() {
         foreach (Military m in Branches) {
             if (m.SuperMilitary != this)
                 Branches.Remove(m);
@@ -108,7 +108,7 @@ namespace GSWS.Assets.Server
                 Fleets.Remove(f);
         }
     }
-    public void UpdateSuperGroups() {
+    public override void UpdateSuperGroups() {
         if (SuperMilitary != null)
             SuperMilitary.Branches.Add(this);
         else

@@ -16,7 +16,7 @@ using JMSuite.Collections;
 namespace GSWS.Assets.Server
 {
 public enum Relationship { Ally, Neutral, Enemy };
-[Serializable] public class Government : IObject {
+[Serializable] public class Government : Object {
     #region Properties
     [XmlAttribute] public string ID;
     public string Name, Color, Description;
@@ -54,7 +54,7 @@ public enum Relationship { Ally, Neutral, Enemy };
     }
     #endregion
     #region Boiler Plate
-    public void UpdateValues(Database db) {
+    public override void UpdateValues(Database db) {
         Government government;
         Military military;
         if (db.Governments.TryGetValue(kSuperGovernment, out government))
@@ -67,7 +67,7 @@ public enum Relationship { Ally, Neutral, Enemy };
         }
         Relationships[ID] = Relationship.Ally;
     }
-    public void UpdateKeys() {
+    public override void UpdateKeys() {
         kSuperGovernment = kMilitary = "";
         if (SuperGovernment != null)
             kSuperGovernment = SuperGovernment.ID;
@@ -75,7 +75,7 @@ public enum Relationship { Ally, Neutral, Enemy };
             kMilitary = Military.ID;
         
     }
-    public void VerifySubGroups() {
+    public override void VerifySubGroups() {
         foreach (Planet p in MemberPlanets) {
             if (p.Government != this)
                 MemberPlanets.Remove(p);
@@ -85,14 +85,14 @@ public enum Relationship { Ally, Neutral, Enemy };
                 SubGovernments.Remove(g);
         }
     }
-    public void UpdateSuperGroups() {
+    public override void UpdateSuperGroups() {
         if (SuperGovernment != null)
             SuperGovernment.SubGovernments.Add(this);
     }
     public override string ToString() {
         return "{" + ID + ", " + Name + "}";
     }
-    public string DatapadDescription() {
+    public override string DatapadDescription() {
         string description = 
             Name + "\n\n" +
             Description;

@@ -13,16 +13,23 @@ using System.Xml.Serialization;
 
 namespace GSWS.Assets.Server
 {
-[Serializable] abstract public class Weapon {
-    [XmlAttribute] public string ID;
-    public string Name;
-    public float Damage, Accuracy;
-    public int Capacity;
+    [Serializable]
+    abstract public class WeaponModel
+    {
+        [XmlAttribute] public string ID { get; set; }
+        public string Name { get; set; }
+        public float Damage { get; set; }
+        public float Accuracy { get; set; }
+        public int Capacity { get; set; }
 
-    protected void InitInstance() {
-        ID = Name = "";
-        Damage = Accuracy = 0f;
-        Capacity = 0;
+        public WeaponModel() : this("", "", 0, 0, 0) { }
+        public WeaponModel(string id, string name, float damage, float accuracy, int capacity)
+        {
+            ID = id;
+            Name = name;
+            Damage = damage;
+            Accuracy= accuracy;
+            Capacity = capacity;
+        }
     }
-}
 }
