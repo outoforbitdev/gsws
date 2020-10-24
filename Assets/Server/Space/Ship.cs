@@ -62,6 +62,8 @@ namespace GSWS.Assets.Server
             kCommanders = new List<string>();
             Complement = new List<Ship>();
             Shields = HullStrength = 0;
+            OffensiveWeapons = new List<Weapon>();
+            DefensiveWeapons = new List<Weapon>();
         }
 
         public void Reset()
@@ -82,8 +84,7 @@ namespace GSWS.Assets.Server
 
         public void Reload()
         {
-            Shields++;
-            Shields = Math.Max(Shields, Model.Shields);
+            Shields = Math.Min(Shields + 1, Model.Shields);
             foreach (Weapon weapon in OffensiveWeapons)
             {
                 weapon.Reload();

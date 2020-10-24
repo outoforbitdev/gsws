@@ -39,10 +39,10 @@ namespace GSWS.Assets.Server
         }
         public int Fire()
         {
-            if (ReloadTimer == 0)
+            if (ReloadTimer == 0 && (Capacity > 0 || Model.Capacity == 0))
             {
                 ReloadTimer = Model.ReloadTimer;
-                Capacity--;
+                Capacity = Math.Max(Capacity - 1, 0);
                 return Model.Damage;
             }
             return 0;
