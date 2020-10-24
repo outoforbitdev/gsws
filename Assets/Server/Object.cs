@@ -28,10 +28,18 @@ namespace GSWS.Assets.Server
             } 
             set
             {
-                if (string.IsNullOrWhiteSpace(ID))
-                {
-                    _id = value;
-                }
+                _id = SetIfEmpty(_id, value);
+            }
+        }
+        protected static string SetIfEmpty(string current, string next)
+        {
+            if (string.IsNullOrWhiteSpace(current))
+            {
+                return next;
+            }
+            else
+            {
+                return current;
             }
         }
         abstract public override string ToString();

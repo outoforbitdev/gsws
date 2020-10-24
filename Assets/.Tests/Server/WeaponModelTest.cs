@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GSWS.Assets.Server;
 
-namespace Server
+namespace GSWS.Assets.Tests.Server
 {
     [TestClass]
     public class WeaponModelTest
@@ -47,14 +47,14 @@ namespace Server
         public void Damage_SetValidValue_OldValue()
         {
             var testWM = new WeaponModel();
-            testWM.Damage = 1f;
+            testWM.Damage = 1;
             Assert.AreEqual(1, testWM.Damage);
         }
         [TestMethod]
         public void Damage_SetInvalidValue_OldValue()
         {
             var testWM = new WeaponModel();
-            testWM.Damage = -1f;
+            testWM.Damage = -1;
             Assert.AreEqual(0, testWM.Damage);
         }
         [TestMethod]

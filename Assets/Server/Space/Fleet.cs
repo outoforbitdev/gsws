@@ -23,7 +23,6 @@ namespace GSWS.Assets.Server
     public class Fleet : Object
     {
         #region Properties
-        [XmlAttribute] public string ID;
         private const float hourlyDistance = 20f;
         public string Name;
         public string kDestination, kNextStop, kOrbiting, kMilitary;
@@ -63,7 +62,7 @@ namespace GSWS.Assets.Server
         {
             get { return Destination == null; }
         }
-        [XmlIgnore] public List<string> Ships;
+        [XmlIgnore] public List<Ship> Ships;
         #endregion
         #region Constructing
         public Fleet()
@@ -74,7 +73,7 @@ namespace GSWS.Assets.Server
             Destination = NextStop = Orbiting = null;
             Military = null;
             Position = new Coordinate(0, 0, 0);
-            Ships = new List<string>();
+            Ships = new List<Ship>();
             Speed = 1f;
         }
         public Fleet(string name) : this()

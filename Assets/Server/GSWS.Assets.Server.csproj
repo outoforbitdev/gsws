@@ -53,9 +53,9 @@
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseTest.cs" />
     <Compile Include="Date.cs" />
-    <Compile Include="Weapons\EmplacementWeaponModel.cs" />
+    <Compile Include="Space\BattleFleet.cs" />
     <Compile Include="Weapons\Weapon.cs" />
-    <Compile Include="Fleet.cs" />
+    <Compile Include="Space\Fleet.cs" />
     <Compile Include="Government.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Military.cs" />
@@ -65,8 +65,8 @@
     <Compile Include="Save.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="Serializer.cs" />
-    <Compile Include="Ship.cs" />
-    <Compile Include="ShipModel.cs" />
+    <Compile Include="Space\Ship.cs" />
+    <Compile Include="Space\ShipModel.cs" />
     <Compile Include="Weapons\WeaponModel.cs" />
   </ItemGroup>
   <ItemGroup />

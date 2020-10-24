@@ -32,8 +32,8 @@ namespace GSWS.Assets.Server
         #endregion
         #region Properties
         public string Name { get; set; }
-        private float _damage;
-        public float Damage
+        private int _damage;
+        public int Damage
         {
             get
             {
@@ -74,16 +74,32 @@ namespace GSWS.Assets.Server
                 }
             }
         }
+        private float _reloadTimer;
+        public float ReloadTimer
+        {
+            get
+            {
+                return _reloadTimer;
+            }
+            set
+            {
+                if (value >= 0)
+                {
+                    _reloadTimer = value;
+                }
+            }
+        }
         #endregion
         #region Constructors
-        public WeaponModel() : this("", "", 0, 0, 0) { }
-        public WeaponModel(string id, string name, float damage, float accuracy, int capacity)
+        public WeaponModel() : this("", "", 0, 0, 0, 0) { }
+        public WeaponModel(string id, string name, int damage, float accuracy, int capacity, float reloadTimer)
         {
             ID = id;
             Name = name;
             Damage = damage;
             Accuracy= accuracy;
             Capacity = capacity;
+            ReloadTimer = reloadTimer;
         }
         #endregion
     }
