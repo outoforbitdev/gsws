@@ -44,6 +44,7 @@ ExportedObj/
 # VS Files
 [Bb]in/
 [Oo]bj/
+[Aa]ssets/Server/*.meta
 
 # Unity3D generated meta files
 *.pidb.meta
