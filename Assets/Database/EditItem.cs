@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace GSWS.Assets.Database
 {
-    public abstract class ReadItem<T>
+    public class EditItem<T>
         where T : Item
     {
         private T _original;
         public T Original
         {
-            protected get { return _original; }
             set { 
                 if (_original == null)
                     {
                         _original = value;
                     }
             }
+            get { return _original; }
         }
         private Lock _lock;
         internal Lock Lock
@@ -31,11 +31,11 @@ namespace GSWS.Assets.Database
                 }
             }
         }
-        public ReadItem()
+        public EditItem()
         {
 
         }
-        public ReadItem(T original)
+        public EditItem(T original)
         {
             Original = original;
         }

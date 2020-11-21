@@ -7,6 +7,14 @@ namespace GSWS.Assets.Tests.Database
 {
     class ReadTestItem: ReadItem<TestItem>
     {
+        public string ID
+        {
+            get { return Original.ID;  }
+        }
+        public int Field
+        {
+            get { return Original.Field; }
+        }
         public ReadTestItem(): base()
         {
 

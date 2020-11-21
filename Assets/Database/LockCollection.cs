@@ -8,16 +8,16 @@ namespace GSWS.Assets.Database
 {
     internal class LockCollection
     {
-        private List<string> ReadExclusive;
-        private List<string> ReadShared;
-        private List<string> EditShared;
-        private string EditExclusive;
+        private List<Lock> ReadExclusive;
+        private List<Lock> ReadShared;
+        private List<Lock> EditShared;
+        private Lock EditExclusive;
 
         public LockCollection()
         {
-            ReadExclusive = new List<string>();
-            ReadShared = new List<string>();
-            EditShared = new List<string>();
+            ReadExclusive = new List<Lock>();
+            ReadShared = new List<Lock>();
+            EditShared = new List<Lock>();
             EditExclusive = null;
         }
         public bool IsEmpty()
@@ -47,79 +47,79 @@ namespace GSWS.Assets.Database
         {
             return id + "*" + Guid.NewGuid().ToString();
         }
-        public bool TryGetReadExclusiveLock(string id, out string lockId)
+        public bool TryGetReadExclusiveLock(string id, out Lock objectLock)
         {
-            lockId = null;
-            if (!HasEditLock())
+            if (HasEditLock())
             {
-                lockId = _GenerateLockId(id);
-                ReadExclusive.Add(lockId);
-                return true;
+                objectLock = null;
+                return false;
             }
-            return false;
-        }
-        public bool TryGetReadSharedLock(string id, out string lockId)
-        {
-            lockId = _GenerateLockId(id);
-            ReadShared.Add(lockId);
+            objectLock = new Lock(this, LockType.ReadExclusive);
+            ReadExclusive.Add(objectLock);
             return true;
         }
-        public bool TryGetEditExclusiveLock(string id, out string lockId)
+        public bool TryGetReadSharedLock(string id, out Lock objectLock)
         {
-            lockId = null;
-            if (!HasReadExclusiveLock())
-            {
-                lockId = _GenerateLockId(id);
-                EditExclusive = lockId;
-                return true;
-            }
-            return false;
+            objectLock = new Lock(this, LockType.ReadShared);
+            ReadShared.Add(objectLock);
+            return true;
         }
-        public bool TryGetEditSharedLock(string id, out string lockId)
+        public bool TryGetEditExclusiveLock(string id, out Lock objectLock)
         {
-            lockId = null;
-            if (!(HasReadExclusiveLock() || HasEditExclusiveLock()))
+            if (HasReadExclusiveLock() || HasEditLock())
             {
-                lockId = _GenerateLockId(id);
-                EditShared.Add(lockId);
-                return true;
+                objectLock = null;
+                return false;
             }
-            return false;
+            objectLock = new Lock(this, LockType.EditExclusive);
+            EditExclusive = objectLock;
+            return true;
+        }
+        public bool TryGetEditSharedLock(string id, out Lock objectLock)
+        {
+            if (HasReadExclusiveLock() || HasEditExclusiveLock())
+            {
+                objectLock = null;
+                return false;
+            }
+            objectLock = new Lock(this, LockType.EditShared);
+            EditShared.Add(objectLock);
+            return true;
         }
         #endregion
         #region Release Locks
-        private bool _releaseLock(string lockId, List<string> locks)
+        private bool _releaseLock(Lock objectLock, List<Lock> locks)
         {
-            return locks.RemoveAll((string value) => value == lockId) > 0;
+            return locks.RemoveAll((Lock value) => value == objectLock) > 0;
         }
-        public bool ReleaseLock(string lockId)
+        public bool ReleaseLock(Lock objectLock)
         {
             return
-                ReleaseEditExclusiveLock(lockId) ||
-                ReleaseEditSharedLock(lockId) ||
-                ReleaseReadExclusiveLock(lockId) ||
-                ReleaseReadSharedLock(lockId);
+                ReleaseEditExclusiveLock(objectLock) ||
+                ReleaseEditSharedLock(objectLock) ||
+                ReleaseReadExclusiveLock(objectLock) ||
+                ReleaseReadSharedLock(objectLock);
         }
-        public bool ReleaseReadExclusiveLock(string lockId)
+        public bool ReleaseReadExclusiveLock(Lock objectLock)
         {
-            return _releaseLock(lockId, ReadExclusive);
+            return _releaseLock(objectLock, ReadExclusive);
         }
-        public bool ReleaseReadSharedLock(string lockId)
+        public bool ReleaseReadSharedLock(Lock objectLock)
         {
-            return _releaseLock(lockId, ReadShared);
+            return _releaseLock(objectLock, ReadShared);
         }
-        public bool ReleaseEditExclusiveLock(string lockId)
+        public bool ReleaseEditExclusiveLock(Lock objectLock)
         {
-            if (lockId == EditExclusive)
+            if (objectLock == EditExclusive)
             {
                 EditExclusive = null;
                 return true;
             }
             return false;
         }
-        public bool ReleaseEditSharedLock(string lockId)
+        public bool ReleaseEditSharedLock(Lock objectLock)
         {
-            return _releaseLock(lockId, EditShared);
+            return _releaseLock(objectLock, EditShared);
         }
         #endregion
     }

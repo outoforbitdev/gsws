@@ -6,13 +6,35 @@ using System.Threading.Tasks;
 
 namespace GSWS.Assets.Database
 {
-    class Lock
+    internal enum LockType { ReadExclusive, ReadShared, EditExclusive, EditShared };
+    internal class Lock
     {
         private LockCollection Locks;
+        private LockType Type;
 
-        public Lock(LockCollection locks)
+        public Lock(LockCollection locks, LockType type)
         {
             Locks = locks;
+            Type = type;
+        }
+
+        public void Release()
+        {
+            switch(Type)
+            {
+                case LockType.ReadExclusive:
+                    Locks.ReleaseReadExclusiveLock(this);
+                    break;
+                case LockType.ReadShared:
+                    Locks.ReleaseReadSharedLock(this);
+                    break;
+                case LockType.EditExclusive:
+                    Locks.ReleaseEditExclusiveLock(this);
+                    break;
+                case LockType.EditShared:
+                    Locks.ReleaseEditSharedLock(this);
+                    break;
+            }
         }
     }
 }

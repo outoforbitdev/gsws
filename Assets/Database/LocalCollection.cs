@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace GSWS.Assets.Database
 {
-    public class LocalCollection<EditT, ReadT>: Collection<EditT, ReadT>
-        where EditT: Item
-        where ReadT: ReadItem<EditT>, new()
+    public class LocalCollection<T, ReadT>: Collection<T, ReadT>
+        where T: Item
+        where ReadT: ReadItem<T>, new()
     {
-        private Dictionary<string, EditT> Items;
+        private Dictionary<string, T> Items;
         public LocalCollection(Database db) : base(db) 
         {
-            Items = new Dictionary<string, EditT>();
+            Items = new Dictionary<string, T>();
         }
 
-        public override bool TryAdd(EditT item)
+        public override bool TryAdd(T item)
         {
             if (!Items.ContainsKey(item.ID))
             {
@@ -25,67 +25,77 @@ namespace GSWS.Assets.Database
             }
             return false;
         }
-        public override bool TryGetReadExclusive(string id, out ReadT item, out string lockId)
+        public override bool TryGetReadExclusive(string id, out ReadT item)
         {
             item = null;
-            lockId = null;
             if (Items.ContainsKey(id))
             {
-                if (Locks[id].TryGetReadExclusiveLock(id, out lockId))
+                Lock objectLock;
+                if (TryGetReadExclusiveLock(id, out objectLock))
                 {
                     item = new ReadT();
-                    item.SetOriginal(Items[id]);
+                    item.Original = Items[id];
+                    item.Lock = objectLock;
                     return true;
                 }
             }
             return false;
         }
-        public override bool TryGetReadShared(string id, out ReadT item, out string lockId)
+        public override bool TryGetReadShared(string id, out ReadT item)
         {
             item = null;
-            lockId = null;
             if (Items.ContainsKey(id))
             {
-                if (Locks[id].TryGetReadSharedLock(id, out lockId))
+                Lock objectLock;
+                if (TryGetReadSharedLock(id, out objectLock))
                 {
                     item = new ReadT();
-                    item.SetOriginal(Items[id]);
+                    item.Original = Items[id];
+                    item.Lock = objectLock;
                     return true;
                 }
             }
             return false;
         }
-        public override bool TryGetEditExclusive(string id, out EditT item, out string lockId)
+        public override bool TryGetEditExclusive(string id, out EditItem<T> item)
         {
-            item = default(EditT);
-            lockId = null;
+            item = null;
             if (Items.ContainsKey(id))
             {
-                if (Locks[id].TryGetEditExclusiveLock(id, out lockId))
+                Lock objectLock;
+                if (TryGetEditExclusiveLock(id, out objectLock))
                 {
-                    item = Items[id];
+                    item = new EditItem<T>(Items[id]);
+                    item.Lock = objectLock;
                     return true;
                 }
             }
             return false;
         }
-        public override bool TryGetEditShared(string id, out EditT item, out string lockId)
+        public override bool TryGetEditShared(string id, out EditItem<T> item)
         {
-            item = default(EditT);
-            lockId = null;
+            item = null;
             if (Items.ContainsKey(id))
             {
-                if (Locks[id].TryGetEditSharedLock(id, out lockId))
+                Lock objectLock;
+                if (TryGetEditSharedLock(id, out objectLock))
                 {
-                    item = Items[id];
+                    item = new EditItem<T>(Items[id]);
+                    item.Lock = objectLock;
                     return true;
                 }
             }
             return false;
         }
-        public override bool TryGetClone(string id, out EditT item)
+        public override bool TryGetClone(string id, out T item)
         {
-            return Items.TryGetValue(id, out item);
+            item = null;
+            if (Items.TryGetValue(id, out item))
+            {
+                item = (T)item.Clone();
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace GSWS.Assets.Tests.Database
 {
     class TestItem: Item
     {
-        int Field;
+        public int Field;
         public TestItem(string id, int field)
         {
             Field = field;
