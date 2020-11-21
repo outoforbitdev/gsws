@@ -11,11 +11,14 @@ namespace GSWS.Assets.Database
         where ReadT: ReadItem<EditT>, new()
     {
         private Dictionary<string, EditT> Items;
-        public LocalCollection(Database db) : base(db) { }
+        public LocalCollection(Database db) : base(db) 
+        {
+            Items = new Dictionary<string, EditT>();
+        }
 
         public override bool TryAdd(EditT item)
         {
-            if (Items.ContainsKey(item.ID))
+            if (!Items.ContainsKey(item.ID))
             {
                 Items.Add(item.ID, item);
                 return true;
@@ -54,7 +57,7 @@ namespace GSWS.Assets.Database
         }
         public override bool TryGetEditExclusive(string id, out EditT item, out string lockId)
         {
-            item = null;
+            item = default(EditT);
             lockId = null;
             if (Items.ContainsKey(id))
             {
@@ -68,7 +71,7 @@ namespace GSWS.Assets.Database
         }
         public override bool TryGetEditShared(string id, out EditT item, out string lockId)
         {
-            item = null;
+            item = default(EditT);
             lockId = null;
             if (Items.ContainsKey(id))
             {
@@ -79,6 +82,10 @@ namespace GSWS.Assets.Database
                 }
             }
             return false;
+        }
+        public override bool TryGetClone(string id, out EditT item)
+        {
+            return Items.TryGetValue(id, out item);
         }
     }
 }

@@ -20,14 +20,5 @@ namespace GSWS.Assets.Database
         {
             return Collections.TryGetValue(collectionName, out collection);
         }
-
-        //public bool TryGetItem(string collectionName, string itemId, IItem item)
-        //{
-        //    Collection<IItem, IItem> collection;
-        //    if (TryGetCollection(collectionName, out collection))
-        //    {
-        //        return collection.
-        //    }
-        //}
     }
 }

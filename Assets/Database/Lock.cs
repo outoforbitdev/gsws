@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace GSWS.Assets.Database
 {
-    abstract public class Item
+    class Lock
     {
-        public string ID;
+        private LockCollection Locks;
 
-        abstract public Item Clone();
+        public Lock(LockCollection locks)
+        {
+            Locks = locks;
+        }
     }
 }

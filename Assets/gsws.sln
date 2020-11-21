@@ -4,15 +4,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSWS.Assets.Server", "Server\GSWS.Assets.Server.csproj", "{F038C401-D311-4873-8538-B37B3D420CA2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03} = {499A7BE5-B3AE-4009-8D09-1D9758021B03}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSWS.Assets.Scripts", "Scripts\GSWS.Assets.Scripts.csproj", "{FBB6C91D-E4A3-48B5-9F1D-6ED60B817216}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F038C401-D311-4873-8538-B37B3D420CA2} = {F038C401-D311-4873-8538-B37B3D420CA2}
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03} = {499A7BE5-B3AE-4009-8D09-1D9758021B03}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSWS.Assets.Tests.Server", ".Tests\Server\GSWS.Assets.Tests.Server.csproj", "{B3AC3B3E-9E6D-46DD-9926-BC0915584983}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F038C401-D311-4873-8538-B37B3D420CA2} = {F038C401-D311-4873-8538-B37B3D420CA2}
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03} = {499A7BE5-B3AE-4009-8D09-1D9758021B03}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSWS.Assets.Database", "Database\GSWS.Assets.Database.csproj", "{499A7BE5-B3AE-4009-8D09-1D9758021B03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSWS.Assets.Tests.Database", ".Tests\Database\GSWS.Assets.Tests.Database.csproj", "{AC1B2BBC-A7A5-4421-98B5-8142F4A2AAF3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03} = {499A7BE5-B3AE-4009-8D09-1D9758021B03}
 	EndProjectSection
 EndProject
 Global
@@ -32,6 +44,14 @@ Global
 		{B3AC3B3E-9E6D-46DD-9926-BC0915584983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3AC3B3E-9E6D-46DD-9926-BC0915584983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3AC3B3E-9E6D-46DD-9926-BC0915584983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499A7BE5-B3AE-4009-8D09-1D9758021B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC1B2BBC-A7A5-4421-98B5-8142F4A2AAF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC1B2BBC-A7A5-4421-98B5-8142F4A2AAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC1B2BBC-A7A5-4421-98B5-8142F4A2AAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC1B2BBC-A7A5-4421-98B5-8142F4A2AAF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

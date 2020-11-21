@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GSWS.Assets.Database
 {
     abstract public class Collection<EditT, ReadT>
-        where EditT : Item
+        where EditT: Item
         where ReadT : ReadItem<EditT>
     {
         internal Dictionary<string, LockCollection> Locks;
@@ -23,6 +23,7 @@ namespace GSWS.Assets.Database
         abstract public bool TryGetReadShared(string id, out ReadT item, out string lockId);
         abstract public bool TryGetEditExclusive(string id, out EditT item, out string lockId);
         abstract public bool TryGetEditShared(string id, out EditT item, out string lockId);
+        abstract public bool TryGetClone(string id, out EditT item);
         private void _EnsureLockCollection(string id)
         {
             if (!Locks.ContainsKey(id))
