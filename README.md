@@ -1,4 +1,4 @@
-# [GSWS v0.3.0-alpha.0](https://github.com/jaymirecki/gsws)
+# [GSWS v0.3.0-alpha.0](https://github.com/outoforbitdev/gsws/tree/0.3-alpha)
 [View the Wiki here!](https://github.com/outoforbitdev/gsws/wiki)
 
 A simulation of the Star Wars Galaxy. This project is being developed in Unity 2019.2.0. This is the same project that was under development in C++ and can now be found in [this repository](https://github.com/jaymirecki/gsws-deprecated).
