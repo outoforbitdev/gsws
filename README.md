@@ -10,7 +10,7 @@ The eventual goal of this project is to be able to simulate a variety of aspects
 * Politics. Elections for positions, with political ideology scaling and branches of government resulting in diverse activities in non user-controlled governments.
 * Warfare. Because otherwise it's just Star. Warfare on the galactic scale, allowing the user to manage troop movements between star systems, with simulated battles when opposing forces converge on the same position. Initially, battles will be resolved with comparitive strength calculations, but will eventually be resolved with battle AI specific to each faction (and commander) and dependent on the battlefield.
 
-The project is still in VERY early phases of development. The first feature that will be released is government management. Currently, population statistics are incorporated into the government operations, but will be factored out into a planet class to allow for multi-planet governments.
+The project is still in VERY early phases of development. The first feature that will be released is the galactic campaign
 
 This is an ambitious project, but there are some cool features to look forward to:
 
@@ -18,24 +18,26 @@ This is an ambitious project, but there are some cool features to look forward t
 * Factions: Eventually, all the major factions will be represented, including some from the Legacy Era (Galactic Alliance, Imperial Remnant, CSA, Hapes, Mandalore, the Hutts, and the Confederation). Initial factions are the New Republic and Galactic Empire, and the campaign is set immediately after the Battle of Endor.
 
 ## Where We Are
-We are currently in the earliest phases of development. Government management is the only feature under development. To facilitate better testing and reduce workload later, saving and loading from file will be implemented as other features are developed.
+We are currently in the earliest phases of development. The backend database system is under active development, to be followed by server-side logic for space battle simulations.
 
 ## Where We Are Going
+[View the most up-to-date roadmap here.](https://github.com/outoforbitdev/gsws/wiki/Road-Map)
 The following is a roadmap for the development of new features:
 
-* Government Management
-* Galactic Map
-    * Complete with planets, systems, sectors, and regions
-* Representation of beings and vehicles
-* Major Factions of the [New Republic Era](https://starwars.fandom.com/wiki/New_Republic_era), including but not limited to
-    * New Republic
-    * Galactic Empire/Dark Empire/Imperial Remnant
-    * The Hutts
-    * Empire of the Hand
-* Quick battle simulation, akin to the Auto-Resolve feature from Empire at War
-* Galactic Campaigns
-* News
-
+* <b>v0.3: Simulated Space Combat</b>
+   * <b>Database</b>
+   * Weapons
+   * Ships
+   * Fleets
+   * Planets
+   * Governments
+   * Logging
+   * Exception Handling
+ * v0.4: Galactic Space Campaign
+ * v0.5: Unit Production
+ * v0.6: Simulated Ground Combat
+ * v0.7: UI
+ * v0.8: Music
 
 ## Developer Change Log
 ### v0.2.0-alpha.1
@@ -71,17 +73,17 @@ Open the project in Unity
 ### Prerequisites
 
 Unity 2019.2.0
-Open the folder in your favorite editor or IDE.
+Open the solution in Visual Studio to edit code.
 
 ## Built With
 
 * [Microsoft .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net472) - To compile and run on Windows
-* [Unity]()
-* [Visual Studio Code](https://code.visualstudio.com/) - The editor used
+* [Unity](https://unity3d.com/get-unity/download)
+* [Visual Studio](https://visualstudio.microsoft.com/) - The editor used
 
 ## Authors
 
-* Jarett (Jay) Mirecki
+* Jay Mirecki
 
 ## Acknowledgments
 
