@@ -12,11 +12,30 @@ namespace GSWS.Assets.Database
     {
         internal Dictionary<string, LockCollection> Locks;
         protected Database DB;
+        protected string Location;
 
         public Collection(Database db)
         {
             DB = db;
             Locks = new Dictionary<string, LockCollection>();
+        }
+        public abstract bool Load(string location);
+        public bool Load()
+        {
+            if (!(Location is null))
+            {
+                Load(Location);
+            }
+            return false;
+        }
+        public abstract bool Save(string location);
+        public bool Save()
+        {
+            if (!(Location is null))
+            {
+                return Save(Location);
+            }
+            return false;
         }
         abstract public bool TryAdd(T item);
         abstract public bool TryGetReadExclusive(string id, out ReadT item);

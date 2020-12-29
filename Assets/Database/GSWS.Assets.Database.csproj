@@ -1,7 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Dependencies\JMSuite.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Dependencies\JMSuite.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="JMSuite">
+      <HintPath>Dependencies\JMSuite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JMSuite.Collections;
 
 namespace GSWS.Assets.Database
 {
@@ -10,12 +12,43 @@ namespace GSWS.Assets.Database
         where T: Item
         where ReadT: ReadItem<T>, new()
     {
-        private Dictionary<string, T> Items;
+        private JDictionary<string, T> Items;
         public LocalCollection(Database db) : base(db) 
         {
-            Items = new Dictionary<string, T>();
+            Items = new JDictionary<string, T>();
         }
-
+        public override bool Load(string location) {
+            Location = location;
+            if (File.Exists(location))
+            {
+                try
+                {
+                    Items = JDictionary<string, T>.DeserializeXml(Location);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public override bool Save(string location)
+        {
+            //try
+            //{
+                Location = location;
+                Items.SerializeXml(location);
+                return true;
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
+        }
         public override bool TryAdd(T item)
         {
             if (!Items.ContainsKey(item.ID))
