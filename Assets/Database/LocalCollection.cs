@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JMSuite.Collections;
+using OOD.Collections;
 
 namespace GSWS.Assets.Database
 {
@@ -12,10 +12,10 @@ namespace GSWS.Assets.Database
         where T: Item
         where ReadT: ReadItem<T>, new()
     {
-        private JDictionary<string, T> Items;
+        private SerializableDictionary<string, T> Items;
         public LocalCollection(Database db) : base(db) 
         {
-            Items = new JDictionary<string, T>();
+            Items = new SerializableDictionary<string, T>();
         }
         public override bool Load(string location) {
             Location = location;
@@ -23,7 +23,7 @@ namespace GSWS.Assets.Database
             {
                 try
                 {
-                    Items = JDictionary<string, T>.DeserializeXml(Location);
+                    Items.XmlDeserialize(location);
                     return true;
                 }
                 catch
@@ -38,16 +38,16 @@ namespace GSWS.Assets.Database
         }
         public override bool Save(string location)
         {
-            //try
-            //{
+            try
+            {
                 Location = location;
-                Items.SerializeXml(location);
+                Items.XmlSerialize(location);
                 return true;
-            //}
-            //catch
-            //{
-            //    return false;
-            //}
+            }
+            catch
+            {
+                return false;
+            }
         }
         public override bool TryAdd(T item)
         {

@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="JMSuite">
-      <HintPath>Dependencies\JMSuite.dll</HintPath>
+    <Reference Include="OOD.Collections">
+      <HintPath>Dependencies\OOD.Collections.dll</HintPath>
     </Reference>
   </ItemGroup>
 
