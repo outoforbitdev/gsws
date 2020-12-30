@@ -43,7 +43,7 @@ namespace GSWS.Assets.Database
                 Location = location;
                 Items.XmlSerialize(location);
                 return true;
-            }
+        }
             catch
             {
                 return false;

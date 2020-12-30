@@ -1,1 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0"?>
+<SerializableDictionaryOfStringTestItem>
+  <item>
+    <key>
+      <string>zero</string>
+    </key>
+    <value>
+      <TestItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="zero">
+        <Field>0</Field>
+      </TestItem>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>one</string>
+    </key>
+    <value>
+      <TestItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="one">
+        <Field>1</Field>
+      </TestItem>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>two</string>
+    </key>
+    <value>
+      <TestItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="two">
+        <Field>2</Field>
+      </TestItem>
+    </value>
+  </item>
+</SerializableDictionaryOfStringTestItem>ializableDictionaryOfStringTestItem>

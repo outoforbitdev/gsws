@@ -5,9 +5,10 @@ using GSWS.Assets.Database;
 
 namespace GSWS.Assets.Tests.Database
 {
-    class TestItem: Item
+    public class TestItem: Item
     {
         public int Field;
+        public TestItem() { }
         public TestItem(string id, int field)
         {
             Field = field;

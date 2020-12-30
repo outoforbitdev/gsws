@@ -31,7 +31,7 @@ namespace GSWS.Assets.Tests.Database
         public void Save_TestItems_ThreeItems()
         {
             string filename = Directory.GetCurrentDirectory().Split("bin")[0] + "test_database_file.xml";
-            Assert.AreEqual("C:\\Users\\jmorr\\Documents\\GitHub\\gsws\\Assets\\.Tests\\Database\\test_database_file.xml", filename);
+            //Assert.AreEqual("C:\\Users\\jmorr\\Documents\\GitHub\\gsws\\Assets\\.Tests\\Database\\test_database_file.xml", filename);
             Assert.IsTrue(ExampleCollection().Save(filename));
         }
         #region Add
