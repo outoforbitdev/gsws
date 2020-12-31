@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GSWS.Assets.Database
 {
-    public class LinkedItem<T> where T: Item
+    public class LinkedItem
     {
         public string ItemID;
         public string Collection;
@@ -14,60 +14,31 @@ namespace GSWS.Assets.Database
 
         }
 
+        public LinkedItem(string collection, string itemID)
+        {
+            ItemID = itemID;
+            Collection = collection;
+        }
+
         public bool TryGetClone(Database database, out Item item)
         {
-            item = null;
-            Collection<Item, ReadItem<Item>> collection;
-
-            if (database.TryGetCollection(Collection, out collection))
-            {
-                return collection.TryGetClone(ItemID, out item);
-            }
-            return false;
+            return database.TryGetItemClone(Collection, ItemID, out item);
         }
         public bool TryGetEditExclusive(Database database, out EditItem<Item> item)
         {
-            item = null;
-            Collection<Item, ReadItem<Item>> collection;
-
-            if (database.TryGetCollection(Collection, out collection))
-            {
-                return collection.TryGetEditExclusive(ItemID, out item);
-            }
-            return false;
+            return database.TryGetItemEditExclusive(Collection, ItemID, out item);
         }
         public bool TryGetEditShared(Database database, out EditItem<Item> item)
         {
-            item = null;
-            Collection<Item, ReadItem<Item>> collection;
-
-            if (database.TryGetCollection(Collection, out collection))
-            {
-                return collection.TryGetEditShared(ItemID, out item);
-            }
-            return false;
+            return database.TryGetItemEditShared(Collection, ItemID, out item);
         }
         public bool TryGetReadExclusive(Database database, out ReadItem<Item> item)
         {
-            item = null;
-            Collection<Item, ReadItem<Item>> collection;
-
-            if (database.TryGetCollection(Collection, out collection))
-            {
-                return collection.TryGetReadExclusive(ItemID, out item);
-            }
-            return false;
+            return database.TryGetItemReadExclusive(Collection, ItemID, out item);
         }
         public bool TryGetReadShared(Database database, out ReadItem<Item> item)
         {
-            item = null;
-            Collection<Item, ReadItem<Item>> collection;
-
-            if (database.TryGetCollection(Collection, out collection))
-            {
-                return collection.TryGetReadShared(ItemID, out item);
-            }
-            return false;
+            return database.TryGetItemReadShared(Collection, ItemID, out item);
         }
     }
 }
