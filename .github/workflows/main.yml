@@ -1,0 +1,36 @@
+name: HerokuContainer
+ 
+on:
+ push:
+  branches:
+  - main
+  - development
+ 
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  
+  steps:
+  - uses: actions/checkout@v1
+  - if: github.ref == 'refs/heads/main'
+    name: Build and deploy main
+    env:
+     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+     APP_NAME: ${{ 'oodaccount' }}
+    run: |
+     dotnet build -c Release
+     docker build . -t $APP_NAME 
+     docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+     heroku container:push web -a $APP_NAME
+     heroku container:release web -a $APP_NAME
+  - if: github.ref == 'refs/heads/development'
+    name: Build and deploy development
+    env:
+     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+     APP_NAME: ${{ 'oodaccount-dev' }}
+    run: |
+     dotnet build -c Release
+     docker build . -t $APP_NAME 
+     docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+     heroku container:push web -a $APP_NAME
+     heroku container:release web -a $APP_NAME
